@@ -1,0 +1,186 @@
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">Cuenta</a></li>
+          <li><a href="#">Horarios</a></li>
+          <li><a href="#">Calendario</a></li>
+          <li><a href="#">Objetivos</a></li>
+        </ul>
+      </nav>
+    </header>
+<div id="main-divs-container"> 
+  {{!-- <div id="main-div-1" class="main-div">
+    <button id="toggle-table-button0">Semana Personal</button>
+    <div id="schedule-table-container0" class="table-hidden stc">
+      <div class="schedule-table">
+        <div class="row header-row">
+          <div class="cell time-cell"></div>
+          <div class="cell">Lunes</div>
+          <div class="cell">Martes</div>
+          <div class="cell">Miércoles</div>
+          <div class="cell">Jueves</div>
+          <div class="cell">Viernes</div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">8:00 - 9:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_0" value={{valores.horarios0_0}}></div> <!-- El orden de los id horarios-a_b_c corresponde a los siguiente: "a" como numero de Tabla, "b" como numero de columna y "c" como numero de fila -->
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_0.1" value={{valores.horarios0_0_1}} ></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_0.2" value={{valores.horarios0_0_2}}></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_0.3" value={{valores.horarios0_0_3}}></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_0.4" value={{valores.horarios0_0_4}}></div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">9:00 - 10:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_1" value={{valores.horarios0_1}}></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_1.1" value={{valores.horarios0_1_1}}></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_1.2" value={{valores.horarios0_1_2}}></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_1.3" value={{valores.horarios0_1_3}}></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_1.4" value={{valores.horarios0_1_4}}></div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">10:00 - 11:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_2" value={{valores.horarios0_2}}></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_2.1" value={{valores.horarios0_2_1}}></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_2.2" value={{valores.horarios0_2_2}}></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_2.3" value={{valores.horarios0_2_3}}></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios0_2.4" value={{valores.horarios0_2_4}}></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="main-div-2" class="main-div">
+  <button id="toggle-table-button1">Trabajo</button>
+
+  <div id="schedule-table-container1" class="table-hidden stc">
+      <div class="schedule-table">
+        <div class="row header-row">
+          <div class="cell time-cell"></div>
+          <div class="cell">Lunes</div>
+          <div class="cell">Martes</div>
+          <div class="cell">Miércoles</div>
+          <div class="cell">Jueves</div>
+          <div class="cell">Viernes</div>
+          <div class="cell">Sábado</div>
+          <div class="cell">Domingo</div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">8:00 - 9:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_0"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_0.1"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_0.2"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_0.3"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_0.4"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_0.5"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_0.6"></div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">9:00 - 10:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_1"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_1.1"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_1.2"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_1.3"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_1.4"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_1.5"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_1.6"></div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">10:00 - 11:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_2"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_2.1"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_2.2"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_2.3"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_2.4"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_2.5"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_2.6"></div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">10:00 - 11:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_3"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_3.1"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_3.2"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_3.3"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_3.4"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_3.5"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_3.6"></div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">10:00 - 11:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_4"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_4.1"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_4.2"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_4.3"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_4.4"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_4.5"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_4.6"></div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">10:00 - 11:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_5"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_5.1"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_5.2"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_5.3"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_5.4"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_5.5"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_5.6"></div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">10:00 - 11:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_6"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_6.1"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_6.2"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_6.3"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_6.4"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_6.5"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_6.6"></div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">10:00 - 11:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_7"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_7.1"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_7.2"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_7.3"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_7.4"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_7.5"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_7.6"></div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">10:00 - 11:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_8"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_8.1"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_8.2"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_8.3"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_8.4"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_8.5"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_8.6"></div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">10:00 - 11:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_9"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_9.1"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_9.2"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_9.3"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_9.4"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_9.5"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios1_9.6"></div>
+        </div>
+      </div>
+    </div>
+  </div> --}}
+  {{!-- <div id="tablasCreadas"></div> --}}
+  <div id="divParaElFetch"></div>
+
+
+  
+
+</div>
+
+{{!-- <div class="custom-shape-divider-bottom-1679404941">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+    </svg>
+</div> --}}
+
+<button id="add-table-btn">+</button>

@@ -1,0 +1,109 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Adaptive Table with Toggle Button</title>
+    <link type="text/css" rel="stylesheet" href="/public/style.css">
+    <script type="text/javascript" src="/public/script.js"></script>
+    <!-- <script type="text/javascript" src="/public/scriptForNodeJS.js"></script> -->
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">Cuenta</a></li>
+          <li><a href="#">Horarios</a></li>
+          <li><a href="#">Calendario</a></li>
+          <li><a href="#">Objetivos</a></li>
+        </ul>
+      </nav>
+    </header>
+<div id="mayor"> 
+  <div class="main-div-1">
+      <button id="toggle-table-button">Semana Personal</button>
+  <div id="schedule-table-container" class="table-hidden">
+    <div class="schedule-table">
+      <div class="row header-row">
+        <div class="cell time-cell"></div>
+        <div class="cell">Lunes</div>
+        <div class="cell">Martes</div>
+        <div class="cell">Miércoles</div>
+        <div class="cell">Jueves</div>
+        <div class="cell">Viernes</div>
+      </div>
+      <div class="row">
+        <div class="cell time-cell">8:00 - 9:00</div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_00"></div> <!-- El orden de los id horarios-a_b_c corresponde a los siguiente: "a" como numero de Tabla, "b" como numero de columna y "c" como numero de fila -->
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_01"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_02"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_03"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_04"></div>
+      </div>
+      <div class="row">
+        <div class="cell time-cell">9:00 - 10:00</div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_10"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_11"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_12"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_13"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_14"></div>
+      </div>
+      <div class="row">
+        <div class="cell time-cell">10:00 - 11:00</div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_20"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_21"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_22"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_23"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-0_24"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="main-div-2">
+  <button id="toggle-table-button2">Trabajo</button>
+
+  <div id="schedule-table-container2" class="table-hidden">
+      <div class="schedule-table">
+        <div class="row header-row">
+          <div class="cell time-cell"></div>
+          <div class="cell">Lunes</div>
+          <div class="cell">Martes</div>
+          <div class="cell">Miércoles</div>
+          <div class="cell">Jueves</div>
+          <div class="cell">Viernes</div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">8:00 - 9:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_00"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_01"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_02"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_03"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_04"></div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">9:00 - 10:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_10"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_11"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_12"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_13"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_14"></div>
+        </div>
+        <div class="row">
+          <div class="cell time-cell">10:00 - 11:00</div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_20"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_21"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_22"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_23"></div>
+          <div class="cell"><input type="text" placeholder="..." id="horarios-1_24"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <button id="add-table-btn">+</button>
+ 
+  <input type="text" id="nombre" value="{{nombre}}">
+
+</div>
+  </body>
+</html>

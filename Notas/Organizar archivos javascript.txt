@@ -1,0 +1,19 @@
+// Cargar los archivos necesarios
+const filesToLoad = [
+  'auth/login.js',
+  'auth/register.js',
+  'content/posts.js',
+  'content/comments.js',
+];
+
+// Función que carga los archivos
+function loadFiles() {
+  for (const file of filesToLoad) {
+    const script = document.createElement('script');
+    script.src = `js/${file}`;
+    document.head.appendChild(script);
+  }
+}
+
+// Llamar a la función para cargar los archivos
+loadFiles();

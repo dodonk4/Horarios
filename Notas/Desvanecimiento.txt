@@ -1,0 +1,84 @@
+Prompt creador:
+Actúa como un programador experto en CSS, HTML y JavaScript.
+Escribe el código para una tabla de tres columnas y tres filas. Debe de haber un botón que diga "Ocultar filas" fuera de la tabla.
+
+El botón cumplirá la función de ocultar las filas. Al ocultarse, deberá de surgir una animación que imite un efecto "cortina". Debe de ocultarse la fila entera, no únicamente su contenido.
+
+Esta animación debe de ser así:
+La tercera fila se esconderá debajo de la segunda fila y se ocultara. Su contenido no va a ser visible para el usuario, debe desvanecerse.
+Luego, la segunda fila se esconderá debajo de la primera fila y se ocultara. Su contenido no va a ser visible para el usuario, debe desvanecerse.
+
+Si se presiona nuevamente el botón de "Ocultar filas", las filas deben de mostrarse realizando la animación para ocultarse a la inversa. Es decir, primero sale la segunda fila apareciendo debajo de la primera, luego la tercera pareciendo por debajo de la segunda.
+
+
+HTML:
+<button id="toggle-btn">Ocultar filas</button>
+<table>
+  <tr>
+    <td>1-1</td>
+    <td>1-2</td>
+    <td>1-3</td>
+  </tr>
+  <tr>
+    <td>2-1</td>
+    <td>2-2</td>
+    <td>2-3</td>
+  </tr>
+  <tr>
+    <td>3-1</td>
+    <td>3-2</td>
+    <td>3-3</td>
+  </tr>
+</table>
+
+CSS:
+table {
+  border-collapse: collapse;
+  margin: 20px auto;
+}
+
+table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+#toggle-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+}
+
+JS:
+const toggleBtn = document.getElementById('toggle-btn');
+const tableRows = document.getElementsByTagName('tr');
+let isHidden = false;
+
+toggleBtn.addEventListener('click', () => {
+  isHidden = !isHidden;
+  if (isHidden) {
+    hideRows();
+  } else {
+    showRows();
+  }
+});
+
+function hideRows() {
+  for (let i = 2; i >= 0; i--) {
+    const row = tableRows[i];
+    row.style.opacity = '0';
+    row.style.transform = 'translateY(-100%)';
+    row.style.transition = 'opacity 0.5s, transform 0.5s';
+  }
+}
+
+function showRows() {
+  for (let i = 0; i < 3; i++) {
+    const row = tableRows[i];
+    row.style.opacity = '1';
+    row.style.transform = 'translateY(0)';
+  }
+}

@@ -1,0 +1,55 @@
+<div class="schedule-table">
+        <div class="row header-row">
+        <div class="cell time-cell"></div>
+        <div class="cell">Lunes</div>
+        <div class="cell">Martes</div>
+        <div class="cell">Miércoles</div>
+        <div class="cell">Jueves</div>
+        <div class="cell">Viernes</div>
+        <div class="cell">Sábado</div>
+        <div class="cell">Domingo</div>
+        </div>
+        <div class="row">
+        <div class="cell time-cell">8:00 - 9:00</div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_00"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_01"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_02"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_03"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_04"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_05"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_06"></div>
+        </div>
+        <div class="row">
+        <div class="cell time-cell">9:00 - 10:00</div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_10"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_11"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_12"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_13"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_14"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_15"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_16"></div>
+        </div>
+        <div class="row">
+        <div class="cell time-cell">10:00 - 11:00</div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_20"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_21"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_22"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_23"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_24"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_25"></div>
+        <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_26"></div>
+        </div>
+
+        {{#repeat times=14}}
+            <div class="row">
+            <div class="cell time-cell">{{11+loop.index}}:00 - {{12+loop.index}}:00</div>
+            <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_{{7+loop.index}}"></div>
+            <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_{{8+loop.index}}"></div>
+            <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_{{9+loop.index}}"></div>
+            <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_{{10+loop.index}}"></div>
+            <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_{{11+loop.index}}"></div>
+            <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_{{12+loop.index}}"></div>
+            <div class="cell"><input type="text" placeholder="..." id="horarios-${mainDivsContainerLength3}_{{13+loop.index}}"></div>
+            </div>
+            {{/repeat}}
+        </div>
