@@ -1,5 +1,5 @@
 const updateValueFunction = () => {
-    let inputs = document.querySelectorAll('input[type="text"]');
+    let inputs = document.querySelectorAll('input[type="text"]:not(.inputForOptions)');
 
     inputs.forEach((input) => {
         input.addEventListener('input', () => {

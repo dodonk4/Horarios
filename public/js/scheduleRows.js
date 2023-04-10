@@ -90,4 +90,25 @@
  * *                ...............
  * *                ...............
  * *            </div>
+ * *
+ * *
+ * *    ¿Qué pasa si se suma una fila?
+ * *    REGLA 1: Todas las filas con el último ID mayor al último ID de la fila creada,
+ * *             sumarán a su último ID por 1.
+ * *        Ejemplo:
+ * *        A id...0 | A id...0
+ * *        B id...1 | B id...1
+ * *        C id...2 | B.a id...2
+ * *        D id...3 | C id...3
+ * *                 | D id...4
+ * *
+ * *    ¿Qué pasa si se elimina una fila?
+ * *    REGLA 2: Todas kas filas con el último ID mayor al último ID de la fila eliminada,
+ * *    restarán a su último ID por uno.
+ * *
+ * *        A id...0 | A id...0 | A id...0
+ * *        B id...1 | B id...1 | B id...1
+ * *        C id...2 | C X      | C X
+ * *        D id...3 | D id...3 | D id...2
+ * *                 |          | 
  */

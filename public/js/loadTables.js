@@ -44,15 +44,41 @@ const loadTables = (tables) => {
             newInput.type = 'text';
             newInput.value = newToggleTableButton.textContent;
             newInput.id = `tableName${editButton.id}`;
-            console.log(newInput.id);
+            newInput.style = `
+            font-family: 'Roboto Mono', sans-serif;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            background-color: #000;
+            color: #fff;
+            border: solid;
+            border-radius: 5px;
+            border-width: 0.5px;
+            margin-left: 10px;
+            transition: all 0.3s ease-in-out;
+            width: 130px;
+            `
+            // console.log(newInput.id);
             newToggleTableButton.replaceWith(newInput);
+            newInput.focus();
             updateValueFunction();
 
-            newInput.addEventListener('change', () => {
+            // newInput.addEventListener('blur', () => {
+            //     newToggleTableButton.textContent = newInput.value;
+            //     newInput.replaceWith(newToggleTableButton);
+            // });
+
+            newInput.addEventListener('keypress', (event) => {
+                console.log('hola');
+                if (event.key === 'Enter') {
+                    newToggleTableButton.textContent = newInput.value;
+                    newInput.replaceWith(newToggleTableButton);
+                  }
+            })
+
+            editButton.addEventListener('click', () => {
                 newToggleTableButton.textContent = newInput.value;
                 newInput.replaceWith(newToggleTableButton);
             });
-
         });
 
 
@@ -107,12 +133,15 @@ const loadTables = (tables) => {
             
             let row = document.createElement('div');
             row.className = 'row';
+            row.id = `row${x - 1}_${i}`;
             // 
             //ESTO ES PARA PONER EN EL HTML DE ROW ANTES DEL HORARIO
+            //El botón haría que la barra sub-row y sus elementos opciones sean mostrados. Pero solo para los elementos que tienen su id. 
+            //EJ: id="button-sub-row0_6"
             row.innerHTML= `
                 <div class="cell time-cell">
-                <input type="button" class="button-sub-row" id="button-sub-row${i}" value=">" style='align: left; width: 20px; height: 20px;'></input>${table.find(celda=> celda.celda_scndId === -(i+1))['celda_value']}</div>
-                <div class="cell"><input type="text" placeholder="..." id="horarios${x - 1}_${i}" value="${table.find(celda=> celda.celda_scndId === i)['celda_value']}"></div>
+                <input type="button" class="button-sub-row" id="button-sub-row${x - 1}_${i}" value=">" style='align: left; width: 20px; height: 20px;'></input>${table.find(celda=> celda.celda_scndId === -(i+1))['celda_value']}</div>
+                <div class="cell"><input type="text" placeholder="..." id="horarios${x - 1}_${i}.0" value="${table.find(celda=> celda.celda_scndId === i)['celda_value']}"></div>
                 <div class="cell"><input type="text" placeholder="..." id="horarios${x - 1}_${i}.1" value="${table.find(celda=> celda.celda_scndId === i + 0.1)['celda_value']}"></div>
                 <div class="cell"><input type="text" placeholder="..." id="horarios${x - 1}_${i}.2" value="${table.find(celda=> celda.celda_scndId === i + 0.2)['celda_value']}"></div>
                 <div class="cell"><input type="text" placeholder="..." id="horarios${x - 1}_${i}.3" value="${table.find(celda=> celda.celda_scndId === i + 0.3)['celda_value']}"></div>
@@ -121,73 +150,54 @@ const loadTables = (tables) => {
                 <div class="cell"><input type="text" placeholder="..." id="horarios${x - 1}_${i}.6" value="${table.find(celda=> celda.celda_scndId === i + 0.6)['celda_value']}"></div>
                 
             `;
-            
+
             let subRow = document.createElement('div');
             const hourForFirstPart = (table.find(celda=> celda.celda_scndId === -(i+1))['celda_value']).slice(0, 7);
             const hourForSecondPart = (table.find(celda=> celda.celda_scndId === -(i+1))['celda_value']).slice(0, 3);
             subRow.className = 'sub-row off2';
             subRow.innerHTML = `
-                <div class="option">${hourForFirstPart} ${hourForSecondPart}45</div>
-                <div class="option">${hourForFirstPart} ${hourForSecondPart}30</div>
-                <div class="option">${hourForFirstPart} ${hourForSecondPart}15</div>
-                <div class="option">${hourForFirstPart} ${hourForSecondPart}<input class="inputForOptions" type="text"></div>
+                <div class="option off2" id="option_${x-1}_${i}.0">${hourForFirstPart} ${hourForSecondPart}45</div>
+                <div class="option off2" id="option_${x-1}_${i}.1">${hourForFirstPart} ${hourForSecondPart}30</div>
+                <div class="option off2" id="option_${x-1}_${i}.2">${hourForFirstPart} ${hourForSecondPart}15</div>
+                <div class="option off2 custom" id="option_${x-1}_${i}.3">${hourForFirstPart} ${hourForSecondPart}<input class="inputForOptions" type="number"></div>
                 `;
-            const elementsOfSubRow = subRow.querySelectorAll('*');
-            elementsOfSubRow.forEach(element => {
-                element.classList.add("off2");
-                // element.classList.remove("off");
+            const optionsToGiveEvent = subRow.querySelectorAll(`.option.off2:not(.custom)`);
+            optionsToGiveEvent.forEach(element => {
+                listenersForOptions(element, row, scheduleTable);
             });
+            const customOptionToGiveEvent = subRow.querySelector(`.option.off2.custom`);
+            // console.log(customOptionToGiveEvent.querySelector('.inputForOptions'));
 
-            const rowButton = row.getElementsByClassName('button-sub-row');
+            listenerForCustomOptions(customOptionToGiveEvent, row, scheduleTable)
+            const rowButton = row.querySelector(`#button-sub-row${x - 1}_${i}`);
+            const subRowElements = subRow.querySelectorAll('*');
+            rowButton.addEventListener('click', () =>{
+                if (subRow.classList.contains('off2')) {
+                    subRow.classList.remove('off2');
+                    subRow.classList.add('on2');
+                    subRowElements.forEach(element => {
+                        element.classList.remove('off2');
+                        element.classList.add('on2');
+                    });
+                } else if (subRow.classList.contains('on2')) {
+                    subRow.classList.remove('on2');
+                    subRow.classList.add('off2');
+                    subRowElements.forEach(element => {
+                        element.classList.remove('on2');
+                        element.classList.add('off2');
+                    });
+                } else{
+                    console.error('No hay cambio de clase disponible');
+                }
+            })
 
             scheduleTable.appendChild(row);
             scheduleTable.appendChild(subRow);
         }
-        const rowButtons = scheduleTable.querySelectorAll('.button-sub-row');
-        console.log(rowButtons);
-        const severalSubRows = scheduleTable.querySelectorAll('.sub-row');
-        const elementsSubRowToChange = scheduleTable.querySelectorAll('.sub-row *');
-        console.log(elementsSubRowToChange);
-        rowButtons.forEach(button => {
-            button.addEventListener('click', ()=>{
-                // for (let i = 0; i < elementsSubRowToChange.length; i++) {
-                    
-                    
-                // }
-                console.log('hola');
-                elementsSubRowToChange.forEach(element => {
-                    if (element.classList.contains('off2')) {
-                        element.classList.add('on2');
-                        element.classList.remove('off2');
-                    } else if (element.classList.contains('on2')) {
-                        element.classList.add('off2');
-                        element.classList.remove('on2');  
-                    }else{
-                        console.error('No hay clase para cambiar');
-                    }
-                });
 
-                severalSubRows.forEach(element => {
-                    if (element.classList.contains('off2')) {
-                        element.classList.add('on2');
-                        element.classList.remove('off2');
-                    } else if (element.classList.contains('on2')) {
-                        element.classList.add('off2');
-                        element.classList.remove('on2');  
-                    }else{
-                        console.error('No hay clase para cambiar');
-                    }
-                });
-
-            })
-        });
         const exampleDivForExpansion = document.createElement('div');
         exampleDivForExpansion.innerHTML = `<br><br><br><br>`;
         scheduleTable.appendChild(exampleDivForExpansion);
-        // const br = document.createElement('br');
-        // const br2 = document.createElement('br');
-        // scheduleTable.appendChild(br);
-        // scheduleTable.appendChild(br2);
         scheduleTableContainer.appendChild(scheduleTable);
         mainDiv.appendChild(scheduleTableContainer);
         mainDivsContainer.appendChild(mainDiv);
