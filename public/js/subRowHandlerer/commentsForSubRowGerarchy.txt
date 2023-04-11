@@ -1,0 +1,96 @@
+
+!!!!!!!!!!!!!!! EL PLANTEAMIENTO ESTÁ MAL
+!!!!!!!!!!!!!!! NO SON LOS PULTIMOS HORARIOS
+!!!!!!!!!!!!!!! ES LA RESTA DEL HORARIO
+!!!!!!!!!!!!!!! ES DECIR 09:00 - 10:00 = |60 - 60| = 0 lo que indica una hora
+!!!!!!!!!!!!!!!          09:15 - 10:45 = |45 - 15| = 30
+!!!!!!!!!!!!!!!          09:00 - 10:30 = |60 - 30| = 30
+!!!!!!!!!!!!!!!          09:45 - 10:23 = |15 - 37| = 22
+!!!!!!!!!!!!!!!          09:15 - 15:45 =  |? - ?| > 60 o que indica que va a estar la opción de agregar filas
+
+Si es 09:15 - 15:45, primero se resta el mayor con el menor (el mayor siempre sera el último a menos que se hable de 23:00 - 00:00)
+                         En este caso, se resta 15 - 9 lo que nos deja con 6. Lo que significa que hay 6 horas de diferencia
+                         Nos quedan los minutos. Se restarán los primeros y luego se sumaran los últimos minutos (6.00 - 0.15 + 0.45) = 6.30
+                         Por lo tanto, se determina que de 09:15 a 15:45 hay seis horas y media de diferencia 
+                         ¿Pero que se hace con ese dato?
+                          Se es posible agregar entonces:
+                          xxxxxxxx09:15 - 10:00
+                          xxxxxxxx09:15 - 11:00
+                          xxxxxxxx09:15 - 12:00
+                          xxxxxxxx09:15 - 13:00
+                          xxxxxxxx09:15 - 14:00
+                          xxxxxxxx09:15 - 15:00
+                          xxxxxxxx09:15 - 15:15
+                          xxxxxxxx09:15 - 15:30
+                          xxxxxxxx09:15 - 15:45> custom > 10:00
+
+                             o     
+                 
+                     Es esta opción porque contiene la sub-fila común de 09:15 y la sub-fila de nuevos horarios.
+                         xxxxxxxx09:15 - 09:30
+                         xxxxxxxx09:15 - 09:45
+                         xxxxxxxx09:15 - 09:[custom]
+                         xxxxxxxx09:15 - 10:00
+                         xxxxxxxx09:15 - 11:00
+                         xxxxxxxx09:15 - 12:00
+                         xxxxxxxx09:15 - 13:00
+                         xxxxxxxx09:15 - 14:00
+                         xxxxxxxx09:15 - 15:00
+                         xxxxxxxx09:15 - 15:45 > custom > 10:00
+
+                             o
+                             
+                        ESTA SUBFILA REEMPLAZA LA FILA PRINCIPAL Y CREA UNA NUEVA QUE VA DEL ÚLTIMO HORARIO A, DEVUELTA, 15:45
+                         09:15 - 09:30
+                         09:15 - 09:45
+                         09:15 - 09:[custom]
+                         09:15 - 10:00
+                         09:15 - [custom]:[custom] (10:00<=x<=15:45) (Está opción es única para los horaris que sobrepasan los 60 minutos)
+                        ESTA SUB FILA NO BORRA LA ANTERIRO, CREA UNA NUEVA FILA
+                         10:00 - 11:00 
+                         11:00 - 12:00
+                         12:00 - 13:00
+                         13:00 - 14:00
+                         14:00 - 15:00
+                         15:00 - 15:45
+
+
+
+
+                         ¿Y cómo es la logica para detectar esto?
+
+                         1. Tengo 6.30 de diferencia entre 09:15 y 15:45
+                         2. Defino cual es la sub-fila normal
+                            a. Obtengo los primeros digitos (09:15)
+                            b. Determino la sub-fila correspondiente a :15, llevando como propiedad el horario 09:
+                            c. Resto 60 (representando una hora) menos los minutos del primer dígito (15), lo que da 45.
+                            d. El resultado de "c" se pasa como decimal (0.45) y se resta  los numeros del punto 1 (6.30 - 0.45).
+                                Da como resultado 5.85, que se pasa como 5.45 al restarse sus minutos iniciales (5.85 - 0.30)
+                                    ¿Y si fuera 6.30 - 0.15?
+                                        Da como resultado 6.15. Al detectar que los últimos digitos son menores a 59, se deja como está.
+                                    ¿Y si fuera 6.30 - 0.55?
+                                        Da como resultado 5.75. Al detectar que los últimos digitos son mayores a 59, se resta el resultado
+                                        con los minutos del numero del punto 1. Lo que nos da como resultado 5.45.
+                         3. El resultado de 2.d (5.45) determina que habrá un bucle for de 5 (son 6 veces porque va de 0 a 5).
+                            a. Se empezará por la hora siguiente a la primera hora (10:00 por ser la primera 09:__) que ira de allí hasta una hora más (10:00 - 11:00)
+                                El bucle se repetirá hasta alcanzar la vez 6.
+                            b. Se reconocera la última vuelta con un if. Al pasar por allí, el último horario será el mismo que del horario original (15:00 - 15:45)
+                             
+
+
+
+                        
+            CASOS EXTREMOS:
+            ¿Y si es de 9:15 a 10:15?
+                09:15 - 10:15
+                    09:15 - 09:30
+                    09:15 - 09:45
+                    09:15 - 10:00
+                    09:15 - [custom]:[custom]
+            ¿Y si es de 9:00 a 10:02?
+                09:00 - 09:15
+                09:00 - 09:30
+                09:00 - 09:45
+                09:00 - 09:[custom]
+                09:00 - 10:00
+                09:00 - [custom]:[custom] (09:00<x<10:02)

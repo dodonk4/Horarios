@@ -1,52 +1,66 @@
-//
-// !!!!!!!!!!!!!!! EL PLANTEAMIENTO ESTÁ MAL
-// !!!!!!!!!!!!!!! NO SON LOS PULTIMOS HORARIOS
-// !!!!!!!!!!!!!!! ES LA RESTA DEL HORARIO
-// !!!!!!!!!!!!!!! ES DECIR 09:00 - 10:00 = |60 - 60| = 0 lo que indica una hora
-// !!!!!!!!!!!!!!!          09:15 - 10:45 = |45 - 15| = 30
-// !!!!!!!!!!!!!!!          09:00 - 10:30 = |60 - 30| = 30
-// !!!!!!!!!!!!!!!          09:45 - 10:23 = |15 - 37| = 22
-// !!!!!!!!!!!!!!!          09:15 - 15:45 =  |? - ?| > 60 o que indica que va a estar la opción de agregar filas
-//
-// Si es 09:15 - 15:45, primero se resta el mayor con el menor (el mayor siempre sera el último a menos que se hable de 23:00 - 00:00)
-//                          En este caso, se resta 15 - 9 lo que nos deja con 6. Lo que significa que hay 6 horas de diferencia
-//                          Nos quedan los minutos. Se restarán los primeros y luego se sumaran los últimos minutos (6.00 - 0.15 + 0.45) = 6.30
-//                          Por lo tanto, se determina que de 09:15 a 15:45 hay seis horas y media de diferencia 
-//                          ¿Pero que se hace con ese dato?
-////                          Se es posible agregar entonces:
-////                          09:15 - 10:00
-////                          09:15 - 11:00
-////                          09:15 - 12:00
-////                          09:15 - 13:00
-////                          09:15 - 14:00
-////                          09:15 - 15:00
-////                          09:15 - 15:15
-////                          09:15 - 15:30
-////                          09:15 - 15:45> custom > 10:00
-//
-//                              o     
-//                  
-//                      Es esta opción porque contiene la sub-fila común de 09:15 y la sub-fila de nuevos horarios.
-//                          09:15 - 09:30
-//                          09:15 - 09:45
-//                          09:15 - 09:[custom]
-//                          09:15 - 10:00
-//                          09:15 - 11:00
-//                          09:15 - 12:00
-//                          09:15 - 13:00
-//                          09:15 - 14:00
-//                          09:15 - 15:00
-//                          09:15 - 15:15
-//                          09:15 - 15:30
-//                          09:15 - 15:45> custom > 10:00
-
 const subRowGerarchy = (element, x, ii) => {
     //This function will help to implement the right sub-row options to each row
     //The sub-row of a row ending in :30 will be different from one ending in :15 or :45
-    // console.log(element);
     const scheduleRaw = obtainSchedulesFromHtmlElement(element, '.time-cell');
     
+    //NEW STRUCTURE
+    const firstTwoDigitsFirstPart = scheduleRaw.slice(0,2);
+    const firstTwoDigitsSecondPart = scheduleRaw.slice(8,10);
+    const lastTwoDigitsFirstPart = scheduleRaw.slice(3, 5);
+    const lastTwoDigitsSecondPart = scheduleRaw.slice(11, 13);
+
+    const restOfHours = firstTwoDigitsSecondPart - firstTwoDigitsFirstPart;
+    //Si restoOfHours es 0, los primeros digitos son iguales
+    //Si restOfHours es mayor a 0, el primer digito de la última parte es mayor tantas veces como restOfHours indique
+    //No es posible que restOfHours sea menor a 0
+
+    //¿Qué pasa con los minutos entonces cuando se tiene un formato como 09:15 - 10:15?
+    //Se restan las horas y restOfHours da 1
+    //Se resta lastTwoDigitsSecondPart - lastTwoDigitsFirstPart y da 0
+    //Por lo tanto, la diferencia de horas es de 1
+    //! Entonces hay un problema con la estructura ya escrita. Hay que hacer un código que se adapte a cualquier estructura
+    //! Es decir, que sirva tanto para 09:00 - 10:00 como para 09:15 - 10:15 o 09:15 - 10:30
+    //Si empieza con :15 y termina con :15, el formato es{
+    //  09:15 - 10:15
+    //      09:15 - 09:30
+    //      09:15 - 09:45
+    //      09:15 - 10:00
+    //      09:15 - [custom]:[custom]
+    // }
+    //Si empieza con :14 y termina con :15, el fomrato es{
+    //  09:14 - 10:15
+    //      09:14 - 09:15
+    //      09:15 - 09:30
+    //      09:15 - 09:45
+    //      09:15 - 10:00
+    //      09:15 - [custom]:[custom]
+    //}
+    //Si empieza con :16 y termina con :15, el formato es{
+    //  09:16 - 10:15
+    //      09:16 - 09:30
+    //      09:16 - 09:45
+    //      09:16 - 10:00
+    //      09:15 - [custom]:[custom]
+    //    
+     
+
+    console.log(`Esta es restOfHours: ${restOfHours}`);
+    console.log(`Estos son los últimos digitos: ${lastTwoDigitsFirstPart} ${lastTwoDigitsSecondPart}`);
+
+    if(restOfHours === 0){
+        //Se agrega una sub-fila normal
+        //¿Y si es de 09:15 a 10:15?
+        '';
+    }
+
+
+    const newHourForFirstPart = scheduleRaw.slice(0,5).replace(':', '');
+    const newHourForSecondPart = scheduleRaw.slice(8,13).replace(':', '');
+    // console.log(`Está es la newStructure: ${newHourForFirstPart} ${newHourForSecondPart}`);
+    
+    //OLD STRUCTURE
     const scheduleEnding = scheduleRaw.slice(11, 14);
+    console.log(`Ending es igual a: ${scheduleEnding}`);
     const hourForFirstPart = scheduleRaw.slice(0,7);
     const hourForSecondPart = scheduleRaw.slice(8,11);
 
