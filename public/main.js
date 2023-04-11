@@ -1,5 +1,9 @@
 // Cargar los archivos necesarios
 const filesToLoad = [
+    'sqlStructure/sqlForNewTable.js',
+    'htmlStructures/htmlForCustomOption.js',
+    'htmlStructures/htmlForCommonOption.js',
+    'htmlStructures/htmlForAddTable.js',
     'usefulFunctions/obtainSchedulesFromHtmlElement.js',
     'subRowHandlerer/subRowGerarchy.js',
     'optionsHandlerer/options/customOption.js',

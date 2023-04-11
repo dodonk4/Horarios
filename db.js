@@ -2,7 +2,7 @@ const mysql = require('mysql');
 
 // const connection = mysql.createConnection({
 //   host: 'localhost',
-//   user: 'sqluser',
+//   user: 'sqluser2',
 //   password: 'password',
 //   database: 'tablas',
 //   multipleStatements: true
@@ -11,7 +11,7 @@ const mysql = require('mysql');
 const pool = mysql.createPool({
   connectionLimit: 10, // Límite de conexiones en el pool
   host: 'localhost',
-  user: 'sqluser',
+  user: 'sqluser2',
   password: 'password',
   database: 'tablas',
   multipleStatements: true

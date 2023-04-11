@@ -1,4 +1,4 @@
-const customOptions = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForRootRow, definitiveId) => {
+const customOptions = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForRootRow, definitiveId, x, ii) => {
         const parentNode = scheduleTable;
         const referenceNode = parentNode.querySelector(`#row${definitiveId}`);
 
@@ -13,26 +13,16 @@ const customOptions = (scheduleTable, elementFromRowWhoContainsOption, newSchedu
         // console.log(finalSchedule);
         const newRow = document.createElement('div');
         newRow.className = 'row on';
-        newRow.id = `row_${definitiveId}`
-        newRow.innerHTML = `
-        <div class="cell time-cell">
-        <input type="button" class="button-sub-row" id="button-sub-row${definitiveId}" value=">" style='align: left; width: 20px; height: 20px;'>${finalSchedule}</div>
-        <div class="cell"><input type="text" placeholder="..." id="horarios${definitiveId}.0" value=""></div>
-        <div class="cell"><input type="text" placeholder="..." id="horarios${definitiveId}.1" value=""></div>
-        <div class="cell"><input type="text" placeholder="..." id="horarios${definitiveId}.2" value=""></div>
-        <div class="cell"><input type="text" placeholder="..." id="horarios${definitiveId}.3" value=""></div>
-        <div class="cell"><input type="text" placeholder="..." id="horarios${definitiveId}.4" value=""></div>
-        <div class="cell"><input type="text" placeholder="..." id="horarios${definitiveId}.5" value=""></div>
-        <div class="cell"><input type="text" placeholder="..." id="horarios${definitiveId}.6" value=""></div>
-        `;
+        newRow.id = `row_${definitiveId}`;
+        newRow.innerHTML = htmlForCustomOption(definitiveId, finalSchedule);
         // console.log(definitiveId);
         elementFromRowWhoContainsOption.innerHTML = `<input type="button" class="button-sub-row" id="button-sub-row${definitiveId}" value=">" style='align: left; width: 20px; height: 20px;'>${newScheduleForRootRow}`;
         // console.log(elementFromRowWhoContainsOption);
 
         //Acá tendría que ir una función para borrar la subfila y agregar una nueva en relación al horario de la fila
         //Sería:
-        subRowGerarchy(elementFromRowWhoContainsOption);
-        subRowGerarchy(newRow);
+        subRowGerarchy(elementFromRowWhoContainsOption.parentNode, x, ii);
+        subRowGerarchy(newRow, x, ii);
 
         parentNode.insertBefore(newRow, referenceNode);
         

@@ -1,16 +1,16 @@
-const listenersForOptions = (option, rowWhoContainsOption, scheduleTable) => {
+const listenersForOptions = (option, rowWhoContainsOption, scheduleTable, x, ii) => {
     const elementFromRowWhoContainsOption = rowWhoContainsOption.querySelector('.time-cell');
     const elementFromRowWhoContainsOptionHTML = elementFromRowWhoContainsOption.innerHTML;
     let noInput = elementFromRowWhoContainsOptionHTML.replace(elementFromRowWhoContainsOption.querySelector('input').outerHTML, '');
     noInput = noInput.trim();
     const checker = noInput.slice(0, 8) + noInput.slice(0,2);
     option.addEventListener('click', () => {
-        forForCommonOptions(option, checker, rowWhoContainsOption, scheduleTable, noInput)
+        forForCommonOptions(option, checker, rowWhoContainsOption, scheduleTable, noInput, x, ii)
     })
 
 }
 
-const listenerForCustomOptions = (option, rowWhoContainsOption, scheduleTable) => {
+const listenerForCustomOptions = (option, rowWhoContainsOption, scheduleTable, x, ii) => {
     let elementFromRowWhoContainsOption = rowWhoContainsOption.querySelector('.time-cell');
     const elementFromRowWhoContainsOptionHTML = elementFromRowWhoContainsOption.innerHTML;
     let noInput = elementFromRowWhoContainsOptionHTML.replace(elementFromRowWhoContainsOption.querySelector('input').outerHTML, '');
@@ -24,7 +24,7 @@ const listenerForCustomOptions = (option, rowWhoContainsOption, scheduleTable) =
         }else if(option.querySelector('.inputForOptions').value < 1){
             console.log('Escriba un mayor a 0 e igual o menor a 59');
         }else{
-            forForCustomOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput)
+            forForCustomOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, x, ii)
         }
         
     })

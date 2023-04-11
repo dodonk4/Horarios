@@ -10,9 +10,9 @@ fetch('/fetching')
 const contenedorDeTablas = document.getElementById('tablasCreadas');
 
 const loadTables = (tables) => {
-    let realTables = tables;
+    let realTables = tables;//?????????????
     let x = 0;
-    Array.isArray(tables[0]) === true ? '' : realTables = [tables];
+    Array.isArray(tables[0]) === true ? '' : realTables = [tables];//??????????????
 
     realTables.forEach(table => {
         x++;
@@ -29,12 +29,16 @@ const loadTables = (tables) => {
     
 
         const mainDivsContainer = document.getElementById('main-divs-container');
+
         const mainDiv = document.createElement(`div`);
         mainDiv.id = `main-div-${x}`;
         mainDiv.className = 'main-div';
+
         const newToggleTableButton = document.createElement('button');
         newToggleTableButton.id = `toggle-table-button${x}`;
         newToggleTableButton.innerText = `${table.find(celda=> celda.celda_type === 'userTableName')['celda_value']}`;
+
+        
         const editButton = document.createElement('button');
         editButton.textContent = 'Cambiar Nombre';
         editButton.id = `${x - 1}`
@@ -163,12 +167,12 @@ const loadTables = (tables) => {
                 `;
             const optionsToGiveEvent = subRow.querySelectorAll(`.option.off2:not(.custom)`);
             optionsToGiveEvent.forEach(element => {
-                listenersForOptions(element, row, scheduleTable);
+                listenersForOptions(element, row, scheduleTable, x, i);
             });
             const customOptionToGiveEvent = subRow.querySelector(`.option.off2.custom`);
             // console.log(customOptionToGiveEvent.querySelector('.inputForOptions'));
 
-            listenerForCustomOptions(customOptionToGiveEvent, row, scheduleTable)
+            listenerForCustomOptions(customOptionToGiveEvent, row, scheduleTable, x, i);
             const rowButton = row.querySelector(`#button-sub-row${x - 1}_${i}`);
             const subRowElements = subRow.querySelectorAll('*');
             rowButton.addEventListener('click', () =>{
