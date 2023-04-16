@@ -1,214 +1,178 @@
 const subRowGerarchy = (element, x, ii) => {
-    //This function will help to implement the right sub-row options to each row
-    //The sub-row of a row ending in :30 will be different from one ending in :15 or :45
+    
     const scheduleRaw = obtainSchedulesFromHtmlElement(element, '.time-cell');
     
-    //DECLARATION OF SUBROWS
-    const subRowFirstHour = document.createElement('div'); //Acordate que más abajo declaraste una sub-row
+    const subRowFirstHour = document.createElement('div');
     subRowFirstHour.className = 'sub-row off2';
 
     const subRowNewHours = document.createElement('div');
     subRowNewHours.className = 'sub-row off2';
 
-    //NEW STRUCTURE
-    const firstPart = scheduleRaw.slice(0, 5); //Puede que no incluya el guión
+
+    const firstPart = scheduleRaw.slice(0, 5);
     const firstTwoDigitsFirstPart = scheduleRaw.slice(0, 2);
     const firstTwoDigitsSecondPart = scheduleRaw.slice(8, 10);
     const lastTwoDigitsFirstPart = scheduleRaw.slice(3, 5);
     const lastTwoDigitsSecondPart = scheduleRaw.slice(11, 13);
 
-    //USEFUL FUNCTION
+    console.log(`
+    Lista:
+        ${firstTwoDigitsFirstPart}:${lastTwoDigitsFirstPart}
+        ${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}`);
+
+    
+    const restHoursFunction = (schedule1, schedule2) => {
+        
+        const [hours1, minutes1] = schedule1.split(':').map(Number);
+        const [hours2, minutes2] = schedule2.split(':').map(Number);
+        const totalMinutes1 = hours1 * 60 + minutes1;
+        const totalMinutes2 = hours2 * 60 + minutes2;
+      
+        
+        const minutesResult = totalMinutes2 - totalMinutes1;
+      
+
+        const finalHours = Math.floor(minutesResult / 60);
+        const finalMinutes = minutesResult % 60;
+
+        const scheduleResult = `${finalHours.toString().padStart(2, '0')}:${finalMinutes.toString().padStart(2, '0')}`;
+        const finalResult = Number(scheduleResult.replace(':', ''));
+        
+        return finalResult;
+    }
+
+
+    const restOfHours = restHoursFunction(`${firstTwoDigitsFirstPart}:${lastTwoDigitsFirstPart}`,`${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}`);
+
     const htmlModelFunction = (lastId, lastMinutes) => {
-        const htmlModel = `<div class="option off2" id="option_${x-1}_${ii}.${lastId}">${firstPart} ${firstTwoDigitsSecondPart}${lastMinutes}</div>`;
-        // Agregar el custom
+        const htmlModel = `<div class="option off2" id="option_${x-1}_${ii}.${lastId}">${firstPart} - ${firstTwoDigitsSecondPart}:${lastMinutes}</div>`;
         return htmlModel;
     }
 
-    let restOfHours = firstTwoDigitsSecondPart - firstTwoDigitsFirstPart;
-    //Si restoOfHours es 0, los primeros digitos son iguales. Por lo que no hay subRowNewHours
-    //Si restOfHours es mayor a 0, el primer digito de la última parte es mayor tantas veces como restOfHours indique
-    //No es posible que restOfHours sea menor a 0
-
-    //¿Qué pasa con los minutos entonces cuando se tiene un formato como 09:15 - 10:15?
-    //Se restan las horas y restOfHours da 1
-    //Se resta lastTwoDigitsSecondPart - lastTwoDigitsFirstPart y da 0
-    //Por lo tanto, la diferencia de horas es de 1
-    //! Entonces hay un problema con la estructura ya escrita. Hay que hacer un código que se adapte a cualquier estructura
-    //! Es decir, que sirva tanto para 09:00 - 10:00 como para 09:15 - 10:15 o 09:15 - 10:30
-    //Si empieza con :15 y termina con :15, el formato es{
-    //  09:15 - 10:15
-    //      09:15 - 09:30
-    //      09:15 - 09:45
-    //      09:15 - 10:00
-    //      09:15 - [custom]:[custom]
-    // }
-    //Si empieza con :14 y termina con :15, el fomrato es{
-    //  09:14 - 10:15
-    //      09:14 - 09:15
-    //      09:15 - 09:30
-    //      09:15 - 09:45
-    //      09:15 - 10:00
-    //      09:15 - [custom]:[custom]
-    //}
-    //Si empieza con :16 y termina con :15, el formato es{
-    //  09:16 - 10:15
-    //      09:16 - 09:30
-    //      09:16 - 09:45
-    //      09:16 - 10:00
-    //      09:15 - [custom]:[custom]
-    //    
-    if (restOfHours > 0) {
-        const subRowNewHours = document.createElement('div');
-        subRowNewHours.className = 'sub-row off2';
-    }else{
-        ''
-    }
-
-
-    const arrayForStructure = [15, 30, 45, 00];//Hay que pasarlos como string luego, porque aparte 00 es 0 en numero
-    const decision = (firstTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart) => {
-        //Para lapsos de una hora
-        if (restOfHours === 0) {
-            // for (let i = 0; i < arrayForStructure.length; i++) {
-                if (Number(lastTwoDigitsFirstPart) < 15) {
-                    subRowFirstHour.innerHTML = `
-                    ${htmlModelFunction(0, '15')}
-                    ${htmlModelFunction(0, '30')}
-                    ${htmlModelFunction(0, '45')}
-                    `
-                    //FALTA CUSTOM
-                    //sub-fila
-                        //firstTwoDigitsFirstPart:00 - firstTwoDigitsFirstPart:15
-                        //firstTwoDigitsFirstPart:00 - firstTwoDigitsFirstPart:30
-                        //firstTwoDigitsFirstPart:00 - firstTwoDigitsFirstPart:45
-                        //firstTwoDigitsFirstPart:00 - firstTwoDigitsFirstPart+1:00
-                        //firstTwoDigitsFirstPart:00 - Custom:Custom
-                }else if (Number(lastTwoDigitsFirstPart) < 30) {
-                    subRowFirstHour.innerHTML = `
-                    ${htmlModelFunction(0, '30')}
-                    ${htmlModelFunction(0, '45')}
-                    `
-                    //FALTA CUSTOM
-                    //sub-fila
-                            //firstTwoDigitsFirstPart:00 - firstTwoDigitsFirstPart:30
-                            //firstTwoDigitsFirstPart:00 - firstTwoDigitsFirstPart:45
-                            //firstTwoDigitsFirstPart:00 - firstTwoDigitsFirstPart+1:00
-                            //firstTwoDigitsFirstPart:00 - Custom:Custom
-                }else if (Number(lastTwoDigitsFirstPart) < 45) {
-                    subRowFirstHour.innerHTML = `
-                    ${htmlModelFunction(0, '45')}
-                    `
-                    //FALTA CUSTOM
-                    //sub-fila
-                            //firstTwoDigitsFirstPart:00 - firstTwoDigitsFirstPart:45
-                            //firstTwoDigitsFirstPart:00 - firstTwoDigitsFirstPart+1:00
-                            //firstTwoDigitsFirstPart:00 - Custom:Custom
-                }else if (Number(lastTwoDigitsFirstPart) <= 59) {
-                    subRowFirstHour.innerHTML = ``;
-                    //FALTA CUSTOM
-                    //sub-fila
-                                //firstTwoDigitsFirstPart:00 - Custom:Custom
-                }
-
-
-                
-            // }
+    const htmlModelFunction2 = (lastId, lastMinutes, limit) => {
+        if(lastMinutes > limit){
+            return false
         }
+        const htmlModel = `<div class="option off2" id="option_${x-1}_${ii}.${lastId}">${firstPart} - ${firstTwoDigitsSecondPart}:${lastMinutes}</div>`;
+        return htmlModel;
+    }
+
+    const htmlModelFor = (lastId, lastMinutes) => {
+        for (let i = 0; i < restOfHours; i++) {
+            const htmlModel = `<div class="option off2" id="option_${x-1}_${ii}.${lastId}">${firstPart + i} - ${firstTwoDigitsSecondPart}:${lastMinutes}</div>`;
+            return htmlModel;
             
+        }
+    }
+
+    const htmlModelCustom = (lastId, lastMinutes) => {
+
+        const lastInputFirstPart = document.createElement('input')
+        firstInput.className = 'inputForOptions'; //VER SI PONERLE "ON" O NO
+        firstInput.type = 'number';
+
+
+        const htmlModel = `<div class="option off2" id="option_${x-1}_${ii}.${lastId}">${firstPart} - ${lastInputFirstPart}:${lastMinutes}</div>`;
+        return htmlModel;
     }
 
 
-    console.log(`Esta es restOfHours: ${restOfHours}`);
-    console.log(`Estos son los últimos digitos: ${lastTwoDigitsFirstPart} ${lastTwoDigitsSecondPart}`);
 
-    // if(restOfHours === 0){
-    //     //Se agrega una sub-fila normal
-    //     //¿Y si es de 09:15 a 10:15?
-    //     '';
-    // }
+    const decision = (firstTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart) => {
+        if (restOfHours < 100) {
+            if (Number(lastTwoDigitsFirstPart) < 15) {
+                subRowFirstHour.innerHTML = `
+                ${htmlModelFunction2(0, '15', lastTwoDigitsSecondPart) != false ? htmlModelFunction2(0, '15') : ''}
+                ${htmlModelFunction2(0, '30', lastTwoDigitsSecondPart) != false ? htmlModelFunction2(0, '30') : ''}
+                ${htmlModelFunction2(0, '45', lastTwoDigitsSecondPart) != false ? htmlModelFunction2(0, '45') : ''}
+                `
+                //FALTA CUSTOM
+            }else if (Number(lastTwoDigitsFirstPart) < 30) {
+                subRowFirstHour.innerHTML = `
+                ${htmlModelFunction(0, '30')}
+                ${htmlModelFunction(0, '45')}
+                `
+                //FALTA CUSTOM
+                        //firstTwoDigitsFirstPart:00 - Custom:Custom
+            }else if (Number(lastTwoDigitsFirstPart) < 45) {
+                subRowFirstHour.innerHTML = `
+                ${htmlModelFunction(0, '45')}
+                `
+                //FALTA CUSTOM
+            }else if (Number(lastTwoDigitsFirstPart) <= 59) {
+                subRowFirstHour.innerHTML = ``;
+                //FALTA CUSTOM
+            }
+        }
 
 
-    // const newHourForFirstPart = scheduleRaw.slice(0,5).replace(':', '');
-    // const newHourForSecondPart = scheduleRaw.slice(8,13).replace(':', '');
-    // // console.log(`Está es la newStructure: ${newHourForFirstPart} ${newHourForSecondPart}`);
-    
-    // //OLD STRUCTURE
-    // const scheduleEnding = scheduleRaw.slice(11, 14);
-    // console.log(`Ending es igual a: ${scheduleEnding}`);
-    // const hourForFirstPart = scheduleRaw.slice(0,7);
-    // const hourForSecondPart = scheduleRaw.slice(8,11);
+        if (restOfHours === 100) {
+            if (Number(lastTwoDigitsFirstPart) < 15) {
+                subRowFirstHour.innerHTML = `
+                ${htmlModelFunction(0, '15')}
+                ${htmlModelFunction(1, '30')}
+                ${htmlModelFunction(2, '45')}
+                <div class="option off2" id="option_${x-1}_${ii}.${3}">${firstTwoDigitsFirstPart + 1}:${00} - ${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}</div>
+                `
+                //FALTA CUSTOM
+            }else if (Number(lastTwoDigitsFirstPart) < 30) {
+                subRowFirstHour.innerHTML = `
+                ${htmlModelFunction(0, '30')}
+                ${htmlModelFunction(1, '45')}
+                <div class="option off2" id="option_${x-1}_${ii}.${2}">${firstTwoDigitsFirstPart + 1}:${00} - ${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}</div>
+                `
+                //FALTA CUSTOM
+                        //firstTwoDigitsFirstPart:00 - Custom:Custom
+            }else if (Number(lastTwoDigitsFirstPart) < 45) {
+                subRowFirstHour.innerHTML = `
+                ${htmlModelFunction(0, '45')}
+                <div class="option off2" id="option_${x-1}_${ii}.${1}">${firstTwoDigitsFirstPart + 1}:${00} - ${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}</div>
+                `
+                //FALTA CUSTOM
+            }else if (Number(lastTwoDigitsFirstPart) <= 59) {
+                subRowFirstHour.innerHTML = `
+                <div class="option off2" id="option_${x-1}_${ii}.${0}">${firstTwoDigitsFirstPart + 1}:${00} - ${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}</div>`;
+                //FALTA CUSTOM
+            }
+        }
 
-    // console.log(`Estos son los first y second: ${hourForFirstPart} y ${hourForSecondPart}`)
+        if (restOfHours > 100) {
+            if (Number(lastTwoDigitsFirstPart) < 15) {
+                subRowFirstHour.innerHTML = `
+                ${htmlModelFunction(0, '15')}
+                ${htmlModelFunction(1, '30')}
+                ${htmlModelFunction(2, '45')}
+                <div class="option off2" id="option_${x-1}_${ii}.${3}">${firstTwoDigitsFirstPart + 1}:${00} - ${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}</div>
+                ${htmlModelFor}
+                `
+                //FALTA CUSTOM
+            }else if (Number(lastTwoDigitsFirstPart) < 30) {
+                subRowFirstHour.innerHTML = `
+                ${htmlModelFunction(0, '30')}
+                ${htmlModelFunction(1, '45')}
+                <div class="option off2" id="option_${x-1}_${ii}.${2}">${firstTwoDigitsFirstPart + 1}:${00} - ${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}</div>
+                ${htmlModelFor}
+                `
+                //FALTA CUSTOM
+                        //firstTwoDigitsFirstPart:00 - Custom:Custom
+            }else if (Number(lastTwoDigitsFirstPart) < 45) {
+                subRowFirstHour.innerHTML = `
+                ${htmlModelFunction(0, '45')}
+                <div class="option off2" id="option_${x-1}_${ii}.${1}">${firstTwoDigitsFirstPart + 1}:${00} - ${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}</div>
+                ${htmlModelFor}
+                `
+                //FALTA CUSTOM
+            }else if (Number(lastTwoDigitsFirstPart) <= 59) {
+                subRowFirstHour.innerHTML = `
+                <div class="option off2" id="option_${x-1}_${ii}.${0}">${firstTwoDigitsFirstPart + 1}:${00} - ${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}</div>
+                ${htmlModelFor}`;
+                //FALTA CUSTOM
+            }
+        }
+        console.log(subRowFirstHour);
+    }
 
-    // let subRow = document.createElement('div');
-    // const htmlModelFunction = (lastId, lastMinutes) => {
-    //     const htmlModel = `<div class="option off2" id="option_${x-1}_${ii}.${lastId}">${hourForFirstPart} ${hourForSecondPart}${lastMinutes}</div>`;
-    //     return htmlModel;
-    // }//Esto sirve para crear la sub-fila con sus horarios correspondientes
-
-    // // const hourForFirstPart = (table.find(celda=> celda.celda_scndId === -(i+1))['celda_value']).slice(0, 7);
-    // // const hourForSecondPart = (table.find(celda=> celda.celda_scndId === -(i+1))['celda_value']).slice(0, 3);
-    // subRow.className = 'sub-row off2';
-    // if (scheduleEnding < 15 ) {
-    //     subRow.innerHTML = `
-    //         ${htmlModelFunction(0, '10')}
-    //         ${htmlModelFunction(1, '05')}
-    //         ${htmlModelFunction(2, `<input class="inputForOptions" type="number">`)}
-    //         `;
-
-    //         //This is how a sub-row is created in "loadTables"
-    //         //
-    //         /*let subRow = document.createElement('div');
-    //         const hourForFirstPart = (table.find(celda=> celda.celda_scndId === -(i+1))['celda_value']).slice(0, 7);
-    //         const hourForSecondPart = (table.find(celda=> celda.celda_scndId === -(i+1))['celda_value']).slice(0, 3);
-    //         subRow.className = 'sub-row off2';
-    //         subRow.innerHTML = `
-    //             <div class="option off2" id="option_${x-1}_${i}.0">${hourForFirstPart} ${hourForSecondPart}45</div>
-    //             <div class="option off2" id="option_${x-1}_${i}.1">${hourForFirstPart} ${hourForSecondPart}30</div>
-    //             <div class="option off2" id="option_${x-1}_${i}.2">${hourForFirstPart} ${hourForSecondPart}15</div>
-    //             <div class="option off2 custom" id="option_${x-1}_${i}.3">${hourForFirstPart} ${hourForSecondPart}<input class="inputForOptions" type="number"></div>
-    //             `;
-    //         const optionsToGiveEvent = subRow.querySelectorAll(`.option.off2:not(.custom)`);
-    //         optionsToGiveEvent.forEach(element => {
-    //             listenersForOptions(element, row, scheduleTable);
-    //         });
-    //         const customOptionToGiveEvent = subRow.querySelector(`.option.off2.custom`);
-    //         */
-    //         //
-
-    //         // Se inserta en la fila creada
-    //         // Se borra la sub-fila de la fila raíz
-    //         // Se implementa otra sub-fila correspondiente al nuevo horario de la fila raíz
-    // }else if (scheduleEnding < 30){
-    //     subRow.innerHTML = `
-    //         ${htmlModelFunction(0, '15')}
-    //         ${htmlModelFunction(1, '10')}
-    //         ${htmlModelFunction(2, '05')}
-    //         ${htmlModelFunction(3, `<input class="inputForOptions" type="number">`)}
-    //         `;
-    //     //addEventListeners
-    //     //appendChild a la row
-    // }else if (scheduleEnding < 45) {
-    //     subRow.innerHTML = `
-    //         ${htmlModelFunction(0, '30')}
-    //         ${htmlModelFunction(1, '15')}
-    //         ${htmlModelFunction(2, `<input class="inputForOptions" type="number">`)}
-    //         `;
-    //     //addEventListeners
-    //     //appendChild a la row
-    // }else{
-    //     subRow.innerHTML = `
-    //         ${htmlModelFunction(0, '45')}
-    //         ${htmlModelFunction(1, '30')}
-    //         ${htmlModelFunction(2, '15')}
-    //         ${htmlModelFunction(3, `<input class="inputForOptions" type="number">`)}
-    //         `;
-    //     //addEventListeners
-    //     //appendChild a la row
-    // }
-
-    // console.log(subRow);
+    decision(firstTwoDigitsFirstPart, lastTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsSecondPart);
 }
 
-// subRowGerarchy(47);
 

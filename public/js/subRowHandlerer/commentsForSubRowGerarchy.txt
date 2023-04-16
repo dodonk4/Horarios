@@ -94,3 +94,55 @@ Si es 09:15 - 15:45, primero se resta el mayor con el menor (el mayor siempre se
                 09:00 - 09:[custom]
                 09:00 - 10:00
                 09:00 - [custom]:[custom] (09:00<x<10:02)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  //Si restOfHours es mayor a 0, el primer digito de la última parte es mayor tantas veces como restOfHours indique
+    //No es posible que restOfHours sea menor a 0
+
+    //¿Qué pasa con los minutos entonces cuando se tiene un formato como 09:15 - 10:15?
+    //Se restan las horas y restOfHours da 1
+    //Se resta lastTwoDigitsSecondPart - lastTwoDigitsFirstPart y da 0
+    //Por lo tanto, la diferencia de horas es de 1
+    //! Entonces hay un problema con la estructura ya escrita. Hay que hacer un código que se adapte a cualquier estructura
+    //! Es decir, que sirva tanto para 09:00 - 10:00 como para 09:15 - 10:15 o 09:15 - 10:30
+    //Si empieza con :15 y termina con :15, el formato es{
+    //  09:15 - 10:15
+    //      09:15 - 09:30
+    //      09:15 - 09:45
+    //      09:15 - 10:00
+    //      09:15 - [custom]:[custom]
+    // }
+    //Si empieza con :14 y termina con :15, el fomrato es{
+    //  09:14 - 10:15
+    //      09:14 - 09:15
+    //      09:15 - 09:30
+    //      09:15 - 09:45
+    //      09:15 - 10:00
+    //      09:15 - [custom]:[custom]
+    //}
+    //Si empieza con :16 y termina con :15, el formato es{
+    //  09:16 - 10:15
+    //      09:16 - 09:30
+    //      09:16 - 09:45
+    //      09:16 - 10:00
+    //      09:15 - [custom]:[custom]
+    //    
