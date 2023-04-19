@@ -2,6 +2,8 @@
 const filesToLoad = [
     'usefulFunctions/obtainSchedulesFromHtmlElement.js',
     'usefulFunctions/restScheduleFunction.js',
+    'subRowHandlerer/variables.js',
+    'subRowHandlerer/htmlModelFunctions.js',
     'subRowHandlerer/subRowGerarchy.js',
     'sqlStructure/sqlForNewTable.js',
     'htmlStructures/htmlForCustomOption.js',

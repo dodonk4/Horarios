@@ -30,7 +30,7 @@ const testingElement2 = document.createElement('div');
 testingElement2.className = 'row on';
 testingElement2.id = 'row0_0';
 testingElement2.innerHTML = `
-    <div class="cell time-cell on"><input type="button" class="button-sub-row" id="button-sub-row0_1" value=">" style="align: left; width: 20px; height: 20px;">09:00 - 10:30</div>
+    <div class="cell time-cell on"><input type="button" class="button-sub-row" id="button-sub-row0_1" value=">" style="align: left; width: 20px; height: 20px;">09:00 - 10:45</div>
     <div class="cell on"><input type="text" placeholder="..." id="horarios0_0.0" value="Hol" class="on"></div>
     <div class="cell on"><input type="text" placeholder="..." id="horarios0_0.1" value="" class="on"></div>
     <div class="cell on"><input type="text" placeholder="..." id="horarios0_0.2" value="" class="on"></div>
@@ -72,6 +72,20 @@ const testingElement5 = document.createElement('div');
 testingElement5.className = 'row on';
 testingElement5.id = 'row0_0';
 testingElement5.innerHTML = `
+    <div class="cell time-cell on"><input type="button" class="button-sub-row" id="button-sub-row0_1" value=">" style="align: left; width: 20px; height: 20px;">09:00 - 18:24</div>
+    <div class="cell on"><input type="text" placeholder="..." id="horarios0_0.0" value="Hol" class="on"></div>
+    <div class="cell on"><input type="text" placeholder="..." id="horarios0_0.1" value="" class="on"></div>
+    <div class="cell on"><input type="text" placeholder="..." id="horarios0_0.2" value="" class="on"></div>
+    <div class="cell on"><input type="text" placeholder="..." id="horarios0_0.3" value="" class="on"></div>
+    <div class="cell on"><input type="text" placeholder="..." id="horarios0_0.4" value="" class="on"></div>
+    <div class="cell on"><input type="text" placeholder="..." id="horarios0_0.5" value="" class="on"></div>
+    <div class="cell on"><input type="text" placeholder="..." id="horarios0_0.6" value="" class="on"></div>
+`;
+
+const testingElement6 = document.createElement('div');
+testingElement6.className = 'row on';
+testingElement6.id = 'row0_0';
+testingElement6.innerHTML = `
     <div class="cell time-cell on"><input type="button" class="button-sub-row" id="button-sub-row0_1" value=">" style="align: left; width: 20px; height: 20px;">08:46 - 18:24</div>
     <div class="cell on"><input type="text" placeholder="..." id="horarios0_0.0" value="Hol" class="on"></div>
     <div class="cell on"><input type="text" placeholder="..." id="horarios0_0.1" value="" class="on"></div>
@@ -88,3 +102,4 @@ testingElement5.innerHTML = `
 // subRowGerarchy(testingElement3, 0, 0); //*OK
 // subRowGerarchy(testingElement4, 0, 0); //*OK
 subRowGerarchy(testingElement5, 0, 0); //*OK
+subRowGerarchy(testingElement6, 0, 0);
