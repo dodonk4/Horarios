@@ -1,12 +1,5 @@
 const variables = (element) => {
     const scheduleRaw = obtainSchedulesFromHtmlElement(element, '.time-cell');
-    
-    const subRowFirstHour = document.createElement('div');
-    subRowFirstHour.className = 'sub-row off2';
-
-    const subRowNewHours = document.createElement('div');
-    subRowNewHours.className = 'sub-row off2';
-
 
     const firstPart = scheduleRaw.slice(0, 5);
     const firstTwoDigitsFirstPart = scheduleRaw.slice(0, 2);

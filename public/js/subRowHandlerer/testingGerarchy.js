@@ -96,8 +96,8 @@ testingElement6.innerHTML = `
     <div class="cell on"><input type="text" placeholder="..." id="horarios0_0.6" value="" class="on"></div>
 `;
 
-// subRowGerarchy(testingElement0, 0, 0); //* OK
-// subRowGerarchy(testingElement1, 0, 0); //* OK
+subRowGerarchy(testingElement0, 0, 0); //* OK
+subRowGerarchy(testingElement1, 0, 0); // !ERROR = "0" EN EL HTML
 // subRowGerarchy(testingElement2, 0, 0); //* OK
 // subRowGerarchy(testingElement3, 0, 0); //*OK
 // subRowGerarchy(testingElement4, 0, 0); //*OK
