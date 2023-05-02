@@ -15,17 +15,15 @@ const htmlModelFor = (lastId,  x, ii, firstTwoDigitsFirstPart, firstTwoDigitsSec
     }
         
     let restOfSchedulesContainer = restOfSchedules;
-    console.log(restOfSchedulesContainer);
+    // console.log(restOfSchedulesContainer);
     let hoursOfRestOfSchedules = Number(String(restOfSchedules).slice(0,1)); // CHECK
     let htmlModel = ``;
 
 
-
-    let conditionOfFor = lastTwoDigitsSecondPart != '00' ? hoursOfRestOfSchedules : hoursOfRestOfSchedules =- 1;
+    let conditionOfFor = lastTwoDigitsSecondPart != '00' ? hoursOfRestOfSchedules : hoursOfRestOfSchedules += -1;//¿Por qué?
 
     lastId === 0 ? conditionOfFor += 1 : "";
 
-    console.log(conditionOfFor);
 
 
     for (let i = 0; i <= conditionOfFor; i++) {

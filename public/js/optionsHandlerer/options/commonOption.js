@@ -8,5 +8,6 @@ const commonOptions = (rowWhoContainsOption, scheduleTable, noInput, i, x, ii) =
     //hacer un insertBefore para que la div 
     // parentNode
     const parentNode = scheduleTable;
-    console.log(parentNode);        
+    console.log(parentNode);
+    // idListener(x, 2, 'delete');   
 }

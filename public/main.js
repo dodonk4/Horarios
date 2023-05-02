@@ -6,7 +6,8 @@ const filesToLoad = [
     'subRowHandlerer/htmlModelFunctions/htmlModelFunction.js',
     'subRowHandlerer/htmlModelFunctions/htmlModelFunctionSeveralHours.js',
     'subRowHandlerer/htmlModelFunctions/htmlModelFunctionFor.js',
-    'subRowHandlerer/htmlModelFunctions/htmlModelFunctionCustom.js',
+    'subRowHandlerer/htmlModelFunctions/htmlModelFunctionsCustom/htmlModelFunctionCustomSingular.js',
+    'subRowHandlerer/htmlModelFunctions/htmlModelFunctionsCustom/htmlModelFunctionCustomSeveral.js',
     'subRowHandlerer/decition/less.js',
     'subRowHandlerer/decition/equal.js',
     'subRowHandlerer/decition/greater.js',
@@ -27,6 +28,9 @@ const filesToLoad = [
     'toggleTable.js',
     'addTable.js',
     'createSqlTableForNewTable.js',
+    'idListener/idListenerFunctions/idAddListener.js',
+    'idListener/idListenerFunctions/idDeleteListener.js',
+    'idListener/idListener.js',
   ];
   
   // Función que carga los archivos

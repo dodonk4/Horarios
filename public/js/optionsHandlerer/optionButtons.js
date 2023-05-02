@@ -1,4 +1,4 @@
-const listenersForOptions = (option, rowWhoContainsOption, scheduleTable, x, ii) => {
+const listenerForOptions = (option, rowWhoContainsOption, scheduleTable, x, ii) => {
     const elementFromRowWhoContainsOption = rowWhoContainsOption.querySelector('.time-cell');
     const elementFromRowWhoContainsOptionHTML = elementFromRowWhoContainsOption.innerHTML;
     let noInput = elementFromRowWhoContainsOptionHTML.replace(elementFromRowWhoContainsOption.querySelector('input').outerHTML, '');

@@ -72,7 +72,6 @@ const loadTables = (tables) => {
             // });
 
             newInput.addEventListener('keypress', (event) => {
-                console.log('hola');
                 if (event.key === 'Enter') {
                     newToggleTableButton.textContent = newInput.value;
                     newInput.replaceWith(newToggleTableButton);
@@ -130,10 +129,10 @@ const loadTables = (tables) => {
 
 
         
-        const numeroDeFilas2 = table.filter(celdas=> celdas.celda_scndId >= 0 && celdas.celda_scndId != null);
-        const numeroDeFilas3 = numeroDeFilas2.length/7 
-        console.log(numeroDeFilas3);
-        for(let i=0; i < numeroDeFilas3; i++){
+        // const numeroDeFilas2 = table.filter(celdas=> celdas.celda_scndId >= 0 && celdas.celda_scndId != null);
+        const numeroDeFilas2 = table.filter(celdas=> celdas.celda_type === 'schedule');
+        // const numeroDeFilas3 = numeroDeFilas2.length/7
+        for(let i=0; i < numeroDeFilas2.length; i++){
             
             let row = document.createElement('div');
             row.className = 'row';
@@ -145,34 +144,50 @@ const loadTables = (tables) => {
             row.innerHTML= `
                 <div class="cell time-cell">
                 <input type="button" class="button-sub-row" id="button-sub-row${x - 1}_${i}" value=">" style='align: left; width: 20px; height: 20px;'></input>${table.find(celda=> celda.celda_scndId === -(i+1))['celda_value']}</div>
-                <div class="cell"><input type="text" placeholder="..." id="horarios${x - 1}_${i}.0" value="${table.find(celda=> celda.celda_scndId === i)['celda_value']}"></div>
-                <div class="cell"><input type="text" placeholder="..." id="horarios${x - 1}_${i}.1" value="${table.find(celda=> celda.celda_scndId === i + 0.1)['celda_value']}"></div>
-                <div class="cell"><input type="text" placeholder="..." id="horarios${x - 1}_${i}.2" value="${table.find(celda=> celda.celda_scndId === i + 0.2)['celda_value']}"></div>
-                <div class="cell"><input type="text" placeholder="..." id="horarios${x - 1}_${i}.3" value="${table.find(celda=> celda.celda_scndId === i + 0.3)['celda_value']}"></div>
-                <div class="cell"><input type="text" placeholder="..." id="horarios${x - 1}_${i}.4" value="${table.find(celda=> celda.celda_scndId === i + 0.4)['celda_value']}"></div>
-                <div class="cell"><input type="text" placeholder="..." id="horarios${x - 1}_${i}.5" value="${table.find(celda=> celda.celda_scndId === i + 0.5)['celda_value']}"></div>
-                <div class="cell"><input type="text" placeholder="..." id="horarios${x - 1}_${i}.6" value="${table.find(celda=> celda.celda_scndId === i + 0.6)['celda_value']}"></div>
+                <div class="cell"><input type="text" class="cell-input" placeholder="..." id="horarios${x - 1}_${i}.0" value="${table.find(celda=> celda.celda_scndId === i)['celda_value']}"></div>
+                <div class="cell"><input type="text" class="cell-input" placeholder="..." id="horarios${x - 1}_${i}.1" value="${table.find(celda=> celda.celda_scndId === i + 0.1)['celda_value']}"></div>
+                <div class="cell"><input type="text" class="cell-input" placeholder="..." id="horarios${x - 1}_${i}.2" value="${table.find(celda=> celda.celda_scndId === i + 0.2)['celda_value']}"></div>
+                <div class="cell"><input type="text" class="cell-input" placeholder="..." id="horarios${x - 1}_${i}.3" value="${table.find(celda=> celda.celda_scndId === i + 0.3)['celda_value']}"></div>
+                <div class="cell"><input type="text" class="cell-input" placeholder="..." id="horarios${x - 1}_${i}.4" value="${table.find(celda=> celda.celda_scndId === i + 0.4)['celda_value']}"></div>
+                <div class="cell"><input type="text" class="cell-input" placeholder="..." id="horarios${x - 1}_${i}.5" value="${table.find(celda=> celda.celda_scndId === i + 0.5)['celda_value']}"></div>
+                <div class="cell"><input type="text" class="cell-input" placeholder="..." id="horarios${x - 1}_${i}.6" value="${table.find(celda=> celda.celda_scndId === i + 0.6)['celda_value']}"></div>
                 
             `;
 
-            let subRow = document.createElement('div');
-            const hourForFirstPart = (table.find(celda=> celda.celda_scndId === -(i+1))['celda_value']).slice(0, 7);
-            const hourForSecondPart = (table.find(celda=> celda.celda_scndId === -(i+1))['celda_value']).slice(0, 3);
-            subRow.className = 'sub-row off2';
-            subRow.innerHTML = `
-                <div class="option off2" id="option_${x-1}_${i}.0">${hourForFirstPart} ${hourForSecondPart}45</div>
-                <div class="option off2" id="option_${x-1}_${i}.1">${hourForFirstPart} ${hourForSecondPart}30</div>
-                <div class="option off2" id="option_${x-1}_${i}.2">${hourForFirstPart} ${hourForSecondPart}15</div>
-                <div class="option off2 custom" id="option_${x-1}_${i}.3">${hourForFirstPart} ${hourForSecondPart}<input class="inputForOptions" type="number"></div>
-                `;
-            const optionsToGiveEvent = subRow.querySelectorAll(`.option.off2:not(.custom)`);
-            optionsToGiveEvent.forEach(element => {
-                listenersForOptions(element, row, scheduleTable, x, i);
+            // let subRow2 = document.createElement('div');
+            // const hourForFirstPart = (table.find(celda=> celda.celda_scndId === -(i+1))['celda_value']).slice(0, 7);
+            // const hourForSecondPart = (table.find(celda=> celda.celda_scndId === -(i+1))['celda_value']).slice(0, 3);
+            // subRow2.className = 'sub-row off2';
+            // subRow2.innerHTML = `
+            //     <div class="option off2" id="option_${x-1}_${i}.0">${hourForFirstPart} ${hourForSecondPart}45</div>
+            //     <div class="option off2" id="option_${x-1}_${i}.1">${hourForFirstPart} ${hourForSecondPart}30</div>
+            //     <div class="option off2" id="option_${x-1}_${i}.2">${hourForFirstPart} ${hourForSecondPart}15</div>
+            //     <div class="option off2 custom" id="option_${x-1}_${i}.3">${hourForFirstPart} ${hourForSecondPart}<input class="inputForOptions" type="number"></div>
+            //     `;
+            // console.log(subRow2);
+
+            //    //
+            let subRow = subRowGerarchy(row, x, i);
+            // console.log(subRow);
+            //    //
+
+
+            // const optionsToGiveEvent = subRow.querySelectorAll(`.option.off2:not(.custom)`);
+            const commonOptionsToGiveEvent = subRow.querySelectorAll(`.option`);
+            const customOptionsToGiveEvent = subRow.querySelectorAll(`.custom`);
+
+            customOptionsToGiveEvent.forEach(element => {
+                listenerForCustomOptions(element, row, scheduleTable, x, i);
             });
-            const customOptionToGiveEvent = subRow.querySelector(`.option.off2.custom`);
+
+            commonOptionsToGiveEvent.forEach(element => {
+                listenerForOptions(element, row, scheduleTable, x, i);
+            });
+            // const customOptionToGiveEvent = subRow.querySelector(`.option.off2.custom`);
+
             // console.log(customOptionToGiveEvent.querySelector('.inputForOptions'));
 
-            listenerForCustomOptions(customOptionToGiveEvent, row, scheduleTable, x, i);
+            // listenerForCustomOptions(customOptionToGiveEvent, row, scheduleTable, x, i);
             const rowButton = row.querySelector(`#button-sub-row${x - 1}_${i}`);
             const subRowElements = subRow.querySelectorAll('*');
             rowButton.addEventListener('click', () =>{
@@ -211,6 +226,7 @@ const loadTables = (tables) => {
         });
     });   
     updateValueFunction();
+    // idListener(0, 2, 'delete');//*OK
     
 };
 

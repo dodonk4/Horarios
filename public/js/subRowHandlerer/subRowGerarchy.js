@@ -15,33 +15,21 @@ const subRowGerarchy = (element, x, ii) => {
     const lastTwoDigitsSecondPart = vars[4];
 
 
-    //TESTING TOOL
-    console.log(`
-    Lista:
-        ${firstTwoDigitsFirstPart}:${lastTwoDigitsFirstPart}
-        ${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}
+    // //TESTING TOOL
+    // console.log(`
+    // Lista:
+    //     ${firstTwoDigitsFirstPart}:${lastTwoDigitsFirstPart}
+    //     ${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}
         
-        ${firstTwoDigitsSecondPart}`);
-    //
+    //     ${firstTwoDigitsSecondPart}`);
+    // //
     
 
 
     const restOfSchedules = restScheduleFunction(`${firstTwoDigitsFirstPart}:${lastTwoDigitsFirstPart}`,`${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}`);
 
 
-
-    const htmlModelCustom = (lastId) => {
-
-        const lastInputLastPart = document.createElement('input')
-        lastInputLastPart.className = 'inputForOptions'; //VER SI PONERLE "ON" O NO
-        lastInputLastPart.type = 'number';
-
-        const htmlModel = `<div class="option off2" id="option_${x-1}_${ii}.${lastId}">${firstPart} - ${firstTwoDigitsFirstPart}:${lastInputLastPart}</div>`;
-        return htmlModel;
-    }
-
-
-    decition(subRowFirstHour, x, ii, restOfSchedules, firstPart, firstTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart);
+    return decition(subRowFirstHour, x, ii, restOfSchedules, firstPart, firstTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart);
 }
 
 
