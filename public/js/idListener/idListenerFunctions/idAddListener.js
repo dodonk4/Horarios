@@ -16,7 +16,7 @@ const forAdd = (exactArray, string, changedId, tableNumber, parentNode) => {
     
 
     
-    //ACA SE AGREGA NUEVA FILA
+    //ACA SE AGREGA NUEVA FILA//
     
     console.log(exactArray);
 }
