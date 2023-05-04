@@ -17,6 +17,7 @@
     "express-handlebars": "^7.0.2",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.22",
-    "openai": "^3.2.1"
+    "openai": "^3.2.1",
+    "pg": "^8.10.0"
   }
 }

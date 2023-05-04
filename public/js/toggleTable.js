@@ -15,7 +15,8 @@ const quantityOfTables2 = () => {
 let mainDivsContainerLength2;
 
   const showMainDivs2 = (data) => {
-      mainDivsContainerLength2 = data[0]['COUNT(*)'];
+      // mainDivsContainerLength2 = data[0]['COUNT(*)'];MySql
+      mainDivsContainerLength2 = data.rows[0].count;
       return mainDivsContainerLength2;
   }
  

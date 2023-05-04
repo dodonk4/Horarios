@@ -84,9 +84,19 @@ app.post('/new-table', (req, res) => {
   let schedules = req.body.schedules;
   const userTableNameForSql = `('${userTableName.celda_value}', ${null}, '${userTableName.celda_type}')`;
   const schedulesForSql = schedules.map(schedule => `('${schedule.celda_value}', ${schedule.celda_scndId}, '${schedule.celda_type}')`).join(', ');
+
+  // let sqlStringToCreate = `
+  // CREATE TABLE ` + sqlTableName + `(celda_id INT NOT NULL AUTO_INCREMENT, celda_value VARCHAR(60) NOT NULL, celda_scndId decimal(4,1), celda_type VARCHAR(60), PRIMARY KEY (celda_id));
+  // `; MySQL
+
   let sqlStringToCreate = `
-  CREATE TABLE ` + sqlTableName + `(celda_id INT NOT NULL AUTO_INCREMENT, celda_value VARCHAR(60) NOT NULL, celda_scndId decimal(4,1), celda_type VARCHAR(60), PRIMARY KEY (celda_id));
-  `
+  CREATE TABLE ` + sqlTableName + `(
+    celda_id SERIAL PRIMARY KEY,
+    celda_value VARCHAR(60),
+    celda_scndId DECIMAL(4,1),
+    celda_type VARCHAR(60) NOT NULL);
+  `;
+
 
   const cellsForSql = cells.map(cell => `('${cell.celda_value}', ${cell.celda_scndId}, '${cell.celda_type}')`).join(', ');
   let sqlStringToInject = `INSERT INTO `+ sqlTableName +` (celda_value, celda_scndId, celda_type) values` + cellsForSql + ',' + schedulesForSql + ',' + userTableNameForSql + `;`
@@ -111,11 +121,14 @@ app.post('/new-table', (req, res) => {
 //SQL a script.js
 
 app.get('/fetching', (req, res) => {
-  const allTablesSqlCount = `SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'tablas' AND table_name LIKE 'horarios_'`;
+  // const allTablesSqlCount = `SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'tablas' AND table_name LIKE 'horarios_'`;MySQL
+  const allTablesSqlCount = `SELECT count(*) FROM information_schema.tables WHERE table_type = 'BASE TABLE' AND table_schema = 'public' AND table_name LIKE '%horarios%'`;
   pool.query(allTablesSqlCount, (error, results) => {
-    let sqlTablesQuantityData = results[0];
-    let sqlTablesQuantityNumber = sqlTablesQuantityData['COUNT(*)'];
-    
+    // let sqlTablesQuantityData = results[0]; MySQL
+    // let sqlTablesQuantityNumber = sqlTablesQuantityData['COUNT(*)'];MySql
+    // console.log(results);
+    let sqlTablesQuantityNumber = results.rows[0].count;
+    console.log(sqlTablesQuantityNumber);
     let sqlQueriesArray = [];
 
     for (let i = 0; i < sqlTablesQuantityNumber; i++) {
@@ -128,6 +141,7 @@ app.get('/fetching', (req, res) => {
 
     pool.query(sqlQueriesString, (error, results) => {
         if (error) throw error;
+        // console.log(results);
         res.json(results);
         
       });
@@ -138,7 +152,8 @@ app.get('/fetching', (req, res) => {
   
 
 app.get('/howManyTables', (req, res) => {
-  const quantityOfTables = `SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'tablas' AND table_name LIKE 'horarios_'`;
+  // const quantityOfTables = `SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'tablas' AND table_name LIKE 'horarios_'`;MySql
+  const quantityOfTables = `SELECT count(*) FROM information_schema.tables WHERE table_type = 'BASE TABLE' AND table_schema = 'public' AND table_name LIKE '%horarios%'`;
   pool.query(quantityOfTables, (error, results) => {
     if (error) throw error;
     res.json(results);

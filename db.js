@@ -1,12 +1,22 @@
-const mysql = require('mysql');
+// const mysql = require('mysql');
 
-const pool = mysql.createPool({
-  connectionLimit: 10, // Límite de conexiones en el pool
+// const pool = mysql.createPool({
+//   connectionLimit: 10, // Límite de conexiones en el pool
+//   host: 'localhost',
+//   user: 'sqluser',
+//   password: 'password',
+//   database: 'tablas',
+//   multipleStatements: true
+// });
+
+const { Pool } = require('pg');
+
+const pool = new Pool({
   host: 'localhost',
-  user: 'sqluser',
+  user: 'partner',
   password: 'password',
-  database: 'tablas',
-  multipleStatements: true
+  database: 'postgres',
+  port: 5432
 });
 
 module.exports = pool;
