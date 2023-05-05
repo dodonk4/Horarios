@@ -1,7 +1,7 @@
 fetch('/fetching')
     .then(response => response.json())
     .then(data => {
-        // console.log(data);
+        console.log(data);
         loadTables(data);     
     })
     .catch(error => console.error(error));
