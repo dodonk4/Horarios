@@ -11,7 +11,7 @@ fetch('/fetching')
 const contenedorDeTablas = document.getElementById('tablasCreadas');
 
 const loadTables = (tables) => {
-    // console.log(tables);
+    console.log(tables);
     let realTables = tables;//MySql   ?????????????/
     // let realTables = tables.rows[0].count;
     let x = 0;
