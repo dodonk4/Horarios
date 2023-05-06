@@ -127,7 +127,7 @@ app.get('/fetching', (req, res) => {
   pool.query(allTablesSqlCount, (error, results) => {
     // let sqlTablesQuantityData = results[0]; MySQL
     // let sqlTablesQuantityNumber = sqlTablesQuantityData['COUNT(*)'];MySql
-    // console.log(results);
+    console.log(results);
     let sqlTablesQuantityNumber = results.rows[0].count;
     console.log(sqlTablesQuantityNumber);
     let sqlQueriesArray = [];
