@@ -8,6 +8,7 @@ const pool = require('./db');
 // const pool = db.pool;
 const exphbs = require('express-handlebars');
 const path = require('path');
+const { count } = require('console');
 
 app.engine('handlebars', exphbs.engine());
 app.set('view engine', 'handlebars');
@@ -156,7 +157,7 @@ app.get('/howManyTables', (req, res) => {
   const quantityOfTables = `SELECT count(*) FROM information_schema.tables WHERE table_type = 'BASE TABLE' AND table_schema = 'public' AND table_name LIKE '%horarios%'`;
   pool.query(quantityOfTables, (error, results) => {
     if (error) throw error;
-    res.json(results);
+    res.json(results.rows[0].count);
   })
 })
 

@@ -3,7 +3,6 @@ const quantityOfTables = () => {
     .then(response => response.json())
     .then(data => {
 
-
         showMainDivs(data);
       
       
@@ -11,46 +10,46 @@ const quantityOfTables = () => {
     .catch(error => console.error(error));
 
 };
- let mainDivsContainerLength;
+let mainDivsContainerLength;
 
-    const showMainDivs = (data) => {
-        mainDivsContainerLength = data;
-        return mainDivsContainerLength;
-    }
+const showMainDivs = (data) => {
+    mainDivsContainerLength = data;
+    return mainDivsContainerLength;
+}
    
-    quantityOfTables();
-    let sessionCounterForTableCreation = 0;
+quantityOfTables();
+let sessionCounterForTableCreation = 0;
 
-    addButton.addEventListener('click', () => {
-       
-        let tableIdNumber = mainDivsContainerLength;
-        let sqlTableName = `horarios${tableIdNumber[0]['COUNT(*)'] + sessionCounterForTableCreation}`;
-        let userTableName = {celda_value: 'Nueva Tabla', celda_scndId: '', celda_type: 'userTableName'};
-        sessionCounterForTableCreation++;
-        let arrayOfSchedulesAndCells = sqlForNewTable();
+addButton.addEventListener('click', () => {
+    
+    let tableIdNumber = Number(mainDivsContainerLength);
+    let sqlTableName = `horarios${tableIdNumber + sessionCounterForTableCreation}`;
+    let userTableName = {celda_value: 'Nueva Tabla', celda_scndId: '', celda_type: 'userTableName'};
+    sessionCounterForTableCreation++;
+    let arrayOfSchedulesAndCells = sqlForNewTable();
 
-        createSqlTableForNewTable(sqlTableName, arrayOfSchedulesAndCells[0], arrayOfSchedulesAndCells[1], userTableName);
+    createSqlTableForNewTable(sqlTableName, arrayOfSchedulesAndCells[0], arrayOfSchedulesAndCells[1], userTableName);
 
+});
+
+
+const createSqlTableForNewTable = (sqlTableName, schedules, cells, userTableName) => {
+    fetch('/new-table', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        // body: JSON.stringify({ id: id, valor: valor })
+        body: JSON.stringify({ sqlTableName: sqlTableName, schedules: schedules, cells: cells, userTableName: userTableName })
+    })
+    .then(response => {
+        if (!response.ok) {
+        throw new Error('Ocurrió un error al crear la tabla SQL');
+        }
+        console.log('Tabla creada con éxito!');
+    })
+    .catch(error => {
+        console.error(error);
     });
 
-
-    const createSqlTableForNewTable = (sqlTableName, schedules, cells, userTableName) => {
-        fetch('/new-table', {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json'
-            },
-            // body: JSON.stringify({ id: id, valor: valor })
-            body: JSON.stringify({ sqlTableName: sqlTableName, schedules: schedules, cells: cells, userTableName: userTableName })
-        })
-        .then(response => {
-            if (!response.ok) {
-            throw new Error('Ocurrió un error al crear la tabla SQL');
-            }
-            console.log('Tabla creada con éxito!');
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
-    };
+};

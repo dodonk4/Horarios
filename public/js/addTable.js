@@ -18,7 +18,7 @@ const quantityOfTables3 = () => {
  let mainDivsContainerLength3;
 
     const showMainDivs3 = (data) => {
-        mainDivsContainerLength3 = data[0]['COUNT(*)'];
+        mainDivsContainerLength3 = data.rows[0].count;
         return mainDivsContainerLength3;
     }
    
