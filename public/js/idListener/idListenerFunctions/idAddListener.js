@@ -1,13 +1,6 @@
-const forAdd = (exactArray, string, changedId, tableNumber, parentNode) => {
-    // const newElement = document.createElement('div');
-    // newElement.class = `row`;
-    // newElement.id = `${string}${tableNumber}_${newChangedId}`;//ES + 1 PORQUE TOMA QUE SE CREA BAJO EL 2
+const forAdd = (exactArray, string, changedId, tableNumber) => {
+    //*OBJETIVO: Al crear una nueva fila, se tiene que corregir los ID.
 
-    // parentNode.insertBefore(newRow, referenceNode);
-    console.log(parentNode);
-
-    const newChangedId = changedId + 1;
-    // console.log(exactArray.length - newChangedId);
 
     for (let i = newChangedId; i < exactArray.length; i++) {
         const element = exactArray[i];

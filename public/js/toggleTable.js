@@ -16,7 +16,7 @@ let mainDivsContainerLength2;
 
   const showMainDivs2 = (data) => {
       // mainDivsContainerLength2 = data[0]['COUNT(*)'];MySql
-      mainDivsContainerLength2 = data.rows[0].count;
+      mainDivsContainerLength2 = data;
       return mainDivsContainerLength2;
   }
  

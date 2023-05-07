@@ -365,3 +365,17 @@
     -webkit-appearance: none;
     margin: 0;
   }
+
+.changeName {
+  font-family: 'Roboto Mono', sans-serif;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  background-color: #000;
+  color: #fff;
+  border: solid;
+  border-radius: 5px;
+  border-width: 0.5px;
+  margin-left: 10px;
+  transition: all 0.3s ease-in-out;
+  width: 130px;
+}

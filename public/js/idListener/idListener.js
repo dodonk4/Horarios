@@ -1,13 +1,18 @@
 //ESTE UPDATE ID SIRVE PARA CUANDO SE CREAN SUBFILAS Y SE TIENEN QUE CAMBIAR LOS ID DE LAS FIFLAS RESTANTES
+
+
+
 const idListener = (tableNumber, changedId, action) => {
+
+    console.log(tableNumber, changedId, action);
    
+    
     const rows = document.querySelectorAll(`.row:not(.header-row)`);
     const buttons = document.querySelectorAll(`.button-sub-row`);
     const cellInputs = document.querySelectorAll(`.cell-input`); //NECESITO ÚNICAMENTE EL INPUT
     const options = document.querySelectorAll(`.option`);
     const array = [rows, buttons, cellInputs, options];
 
-    // console.log(options);
     
     const exactVariable = (variable, string) => {
         const exactVariable = [];
@@ -41,16 +46,11 @@ const idListener = (tableNumber, changedId, action) => {
     }else{
         console.error('No hay acción especificada');
     }
-    // forAdd(exactOptions, `option`);
 
-    action === 'delete' ? console.log('delete') : console.log('add');
-    // console.log(exactRows);
-    // console.log(exactButtons);
-    // console.log(exactCellInputs);
-    // console.log(exactOptions);
+    // action === 'delete' ? console.log('delete') : console.log('add');
 
     //REVEER OPTION
 };
 
-const tablaPadre = document.getElementById(`schedule-table-container0`);
-    idListener(0, 2, 'add', contenedorDeTablas); //ME DA UN PROBLEMA CON EL 3 ESTO
+
+     //ME DA UN PROBLEMA CON EL 3 ESTO
