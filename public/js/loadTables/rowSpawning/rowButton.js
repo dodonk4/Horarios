@@ -1,5 +1,5 @@
 const rowButtonFunction = (row, tableNumber, subRow, i) => {
-    const rowButton = row.querySelector(`#button-sub-row${tableNumber- 1}_${i}`);
+    const rowButton = row.querySelector(`#button-sub-row${tableNumber}_${i}`);
         const subRowElements = subRow.querySelectorAll('*');
         rowButton.addEventListener('click', () =>{
             if (subRow.classList.contains('off2')) {

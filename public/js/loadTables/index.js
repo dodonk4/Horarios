@@ -44,7 +44,17 @@ const loadTables = (tables) => {
 
         const rowQuantity = table.rows.filter(celdas=> celdas.celda_type === 'schedule');
 
-        rowSpawning(table, x, scheduleTable, rowQuantity);
+        // console.log(x);
+
+        rowSpawning(table, (x-1), scheduleTable, rowQuantity);//*ES X-1 PORQUE EL PRIMER ID DE CUSTOM OPTION ES 0
+
+        let oneBr = document.createElement('br');
+        
+        oneBr.innerHTML = `<br hidden>`;
+
+        oneBr.id = 'lastElement';
+
+        scheduleTable.appendChild(oneBr);
 
         scheduleTableContainer.appendChild(scheduleTable);
 
