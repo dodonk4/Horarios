@@ -48,15 +48,55 @@ const filesToLoad = [
     'idListener/idListener.js',
   ];
   
-  // Función que carga los archivos
-   const loadFiles = () => {
-    for (const file of filesToLoad) {
-      const script = document.createElement('script');
-      script.src = `/public/js/${file}`;
-      script.type = "text/javascript";
-      document.head.appendChild(script);
-    }
+  // // Función que carga los archivos
+  //  const loadFiles = () => {
+  //   for (const file of filesToLoad) {
+  //     const script = document.createElement('script');
+  //     script.src = `/public/js/${file}`;
+  //     script.type = "text/javascript";
+  //     document.head.appendChild(script);
+  //   }
+  // }
+  
+  // // Llamar a la función para cargar los archivos
+  // loadFiles();
+
+
+  //PRUEBA
+
+  function loadFilesInOrder(files) {
+    return new Promise((resolve, reject) => {
+      let loadedCount = 0;
+  
+      function loadNextFile() {
+        const file = files[loadedCount];
+        const script = document.createElement('script');
+        script.src = `/public/js/${file}`;
+        script.type = "text/javascript";
+        script.onload = () => {
+          loadedCount++;
+          if (loadedCount === files.length) {
+            resolve();
+          } else {
+            loadNextFile();
+          }
+        };
+        script.onerror = () => {
+          reject(new Error(`Error al cargar el archivo: ${file}`));
+        };
+        document.head.appendChild(script);
+      }
+  
+      loadNextFile();
+    });
   }
   
-  // Llamar a la función para cargar los archivos
-  loadFiles();
+  // Llamar a la función para cargar los archivos en orden
+  loadFilesInOrder(filesToLoad)
+    .then(() => {
+      // Todos los archivos se cargaron correctamente en el orden deseado
+      // Puedes realizar acciones adicionales aquí
+    })
+    .catch((error) => {
+      console.error(error);
+    });

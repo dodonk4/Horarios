@@ -20,6 +20,8 @@ const showMainDivs = (data) => {
 quantityOfTables();
 let sessionCounterForTableCreation = 0;
 
+console.log(addButton);
+
 addButton.addEventListener('click', () => {
     
     let tableIdNumber = Number(mainDivsContainerLength);
