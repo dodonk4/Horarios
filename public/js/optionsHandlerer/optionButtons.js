@@ -5,7 +5,8 @@ const listenerForOptions = (option, rowWhoContainsOption, scheduleTable, tableNu
     noInput = noInput.trim();
     const checker = noInput.slice(0, 8) + noInput.slice(0,2);
     option.addEventListener('click', () => {
-        forForCommonOptions(option, checker, rowWhoContainsOption, scheduleTable, noInput, tableNumber, ii)
+        // forForCommonOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, ii)
+        forForOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, ii, 'staticType')
     })
 
 }
@@ -25,7 +26,8 @@ const listenerForCustomOptions = (option, rowWhoContainsOption, scheduleTable, t
         }else if(option.querySelector('.inputForOptions').value < 1){
             console.log('Escriba un mayor a 0 e igual o menor a 59');
         }else{
-            forForCustomOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, ii)
+            // forForCustomOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, ii)
+            forForOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, ii, 'inputType')
         }
         
     })
