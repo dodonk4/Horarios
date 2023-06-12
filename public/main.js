@@ -19,8 +19,6 @@ const filesToLoad = [
     'htmlStructures/htmlForAddTable.js',
     'subRowHandlerer/testingGerarchy.js',
     'optionsHandlerer/options/options.js',
-    // 'optionsHandlerer/forForOptions/forForCommonOptions.js',
-    // 'optionsHandlerer/forForOptions/forForCustomOptions.js',
     'optionsHandlerer/forForOptions/forForOptions.js',
     'optionsHandlerer/optionButtons.js',
     'updateValue.js',
@@ -47,28 +45,12 @@ const filesToLoad = [
     'idListener/idListenerFunctions/idDeleteListener.js',
     'idListener/idListener.js',
   ];
-  
-  // // Función que carga los archivos
-  //  const loadFiles = () => {
-  //   for (const file of filesToLoad) {
-  //     const script = document.createElement('script');
-  //     script.src = `/public/js/${file}`;
-  //     script.type = "text/javascript";
-  //     document.head.appendChild(script);
-  //   }
-  // }
-  
-  // // Llamar a la función para cargar los archivos
-  // loadFiles();
 
-
-  //PRUEBA
-
-  function loadFilesInOrder(files) {
+  const loadFilesInOrder = (files) => {
     return new Promise((resolve, reject) => {
       let loadedCount = 0;
   
-      function loadNextFile() {
+      const loadNextFile = () => {
         const file = files[loadedCount];
         const script = document.createElement('script');
         script.src = `/public/js/${file}`;

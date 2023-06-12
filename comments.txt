@@ -1,0 +1,7 @@
+¡¡ ES OBLIGATORIO COMENTAR EN ESTA SECCIÓN AL FINALIZAR LA PROGRAMACIÓN DIARIA !!
+
+12/6/2023
+-Dar una nueva tabla de opciones horarias al horario el cual cambio
+    Ejemplo: si 08:00 - 09:00 paso a 08:00 - 08:15, darle una tabla nueva.
+-Dar una tabla de opciones al horario creado
+    Ejemplo: basándonos en el ejemplo anterior, tendría que haber una tabla para 08:15 - 09:00
