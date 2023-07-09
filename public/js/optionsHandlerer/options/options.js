@@ -1,4 +1,4 @@
-const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForRootRow, definitiveId, tableNumber, ii) => {
+const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForRootRow, definitiveId, tableNumber, rowNumber) => {
 
     const parentNode = scheduleTable;
 
@@ -14,7 +14,11 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
 
     const isTheLastRowOrAnyOtherRow = (passCard) => {
 
-        modifiedDefinitiveId = definitiveId.slice(0, -2) + '_' + (Number(definitiveId.split('_')[1]) - 1);
+        // modifiedDefinitiveId = definitiveId.slice(0, -2) + '_' + (Number(definitiveId.split('_')[1]) - 1);
+
+        let lastNumberOfDefinitiveId = Number(definitiveId.split('_')[1]);
+        let lastNumberOfDefinitiveIdUpdated = lastNumberOfDefinitiveId - 1;
+        modifiedDefinitiveId = definitiveId.split('_')[0] + '_' + lastNumberOfDefinitiveIdUpdated;
 
         if(passCard === 'lastRow'){
 
@@ -58,6 +62,52 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
 
         parentNode.insertBefore(newRow, referenceNode);
 
+
+        //AREA OF WORK FOR RESETING OPTIONS
+
+
+        console.log('These are the objectives: ');
+        const elementFromRowWhoContainsOptionParent = elementFromRowWhoContainsOption.parentNode;
+        console.log(elementFromRowWhoContainsOptionParent.querySelector('.sub-row'));
+        console.log(elementFromRowWhoContainsOptionParent, newRow);
+
+        let newSubRow1 = subRowGerarchy(elementFromRowWhoContainsOptionParent, tableNumber, rowNumber);
+
+        let anySubRow_testingTool = document.querySelectorAll(`.sub-row`)[rowNumber];
+
+        
+
+        scheduleTable.replaceChild(newSubRow1, anySubRow_testingTool);
+
+        console.log(newSubRow1);
+        
+
+        // debugger;
+
+        
+        
+        let newSubRow2 = subRowGerarchy(newRow, 0, 0);
+
+        console.log(newSubRow2);
+
+
+        //*This is form rowSpawning/index.js. Adapt it, it may help a lot
+
+        // let subRow = subRowGerarchy(row, tableNumber, i);
+
+        // customOptionsFunction(subRow, row, scheduleTable, tableNumber, i);
+        // commonOptionsFunction(subRow, row, scheduleTable, tableNumber, i);
+        
+        
+
+        // rowButtonFunction(row, tableNumber, subRow, i);
+
+
+        // scheduleTable.appendChild(row);
+        // scheduleTable.appendChild(subRow);
+
+        ///////////////
+
         if(passCard === 'lastRow'){
 
             referenceNode.remove();
@@ -72,7 +122,19 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
             ''
         }
 
+        console.log('here must be the reset to erase the original options and add new ones.');
+        /*
+         *optionsReseter(options)
+         * 
+        */
+
+        debugger;
+
+        rowNumber = updateRowNumber(rowNumber, tableNumber);//MODIFICA EL ROWNUMBER PARA QUE SEA COHERENTE CON LOS CAMBIOS DE LA SESIÓN
+
         idListener(tableNumber, definitiveId, 'add');
+
+        rowButtonFunction(elementFromRowWhoContainsOption, tableNumber, newSubRow1, rowNumber);
 
     }
 
@@ -89,4 +151,7 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
         isTheLastRowOrAnyOtherRow('commonRow');
 
     }
+
+    
+    //"elementWithTheNextRowSchedule" is the next row which isn't modified
 }

@@ -1,17 +1,18 @@
-const listenerForOptions = (option, rowWhoContainsOption, scheduleTable, tableNumber, ii) => {
+const listenerForOptions = (option, rowWhoContainsOption, scheduleTable, tableNumber, rowNumber) => {
     const elementFromRowWhoContainsOption = rowWhoContainsOption.querySelector('.time-cell');
     const elementFromRowWhoContainsOptionHTML = elementFromRowWhoContainsOption.innerHTML;
     let noInput = elementFromRowWhoContainsOptionHTML.replace(elementFromRowWhoContainsOption.querySelector('input').outerHTML, '');
     noInput = noInput.trim();
     const checker = noInput.slice(0, 8) + noInput.slice(0,2);
     option.addEventListener('click', () => {
-        // forForCommonOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, ii)
-        forForOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, ii, 'staticType')
+        // forForCommonOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber)
+        forForOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, 'staticType');
+        console.log('A function will be called to grant options the hability to read the new schedules given and reset themselves');
     })
 
 }
 
-const listenerForCustomOptions = (option, rowWhoContainsOption, scheduleTable, tableNumber, ii) => {
+const listenerForCustomOptions = (option, rowWhoContainsOption, scheduleTable, tableNumber, rowNumber) => {
     
     let elementFromRowWhoContainsOption = rowWhoContainsOption.querySelector('.time-cell');
     const elementFromRowWhoContainsOptionHTML = elementFromRowWhoContainsOption.innerHTML;
@@ -26,9 +27,10 @@ const listenerForCustomOptions = (option, rowWhoContainsOption, scheduleTable, t
         }else if(option.querySelector('.inputForOptions').value < 1){
             console.log('Escriba un mayor a 0 e igual o menor a 59');
         }else{
-            // forForCustomOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, ii)
-            forForOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, ii, 'inputType')
+            // forForCustomOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber)
+            forForOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, 'inputType')
         }
+        console.log('A function will be called to grant options the hability to read the new schedules given and reset themselves');
         
     })
 }

@@ -1,4 +1,8 @@
 const rowSpawning = (table, tableNumber, scheduleTable, rowQuantity) => {
+
+    //TESTING
+    console.log(rowQuantity);
+
     for(let i=0; i < rowQuantity.length; i++){
         
         let row = rowFunction(table, tableNumber, i)

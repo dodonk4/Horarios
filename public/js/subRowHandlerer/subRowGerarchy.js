@@ -1,10 +1,11 @@
-const subRowGerarchy = (element, x, ii) => {
+const subRowGerarchy = (element, tableNumber, rowNumber) => {
     
     const subRowFirstHour = document.createElement('div');
+    subRowFirstHour.id = `sub-row${tableNumber}_${rowNumber}`;
     subRowFirstHour.className = 'sub-row off2';
 
-    const subRowNewHours = document.createElement('div');
-    subRowNewHours.className = 'sub-row off2';
+    // const subRowNewHours = document.createElement('div');
+    // subRowNewHours.className = 'sub-row off2'; //ESTO ESTÁ MEDIO AL PEDO
 
     const vars = variables(element);
 
@@ -15,21 +16,10 @@ const subRowGerarchy = (element, x, ii) => {
     const lastTwoDigitsSecondPart = vars[4];
 
 
-    // //TESTING TOOL
-    // console.log(`
-    // Lista:
-    //     ${firstTwoDigitsFirstPart}:${lastTwoDigitsFirstPart}
-    //     ${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}
-        
-    //     ${firstTwoDigitsSecondPart}`);
-    // //
-    
-
-
     const restOfSchedules = restScheduleFunction(`${firstTwoDigitsFirstPart}:${lastTwoDigitsFirstPart}`,`${firstTwoDigitsSecondPart}:${lastTwoDigitsSecondPart}`);
 
-
-    return decition(subRowFirstHour, x, ii, restOfSchedules, firstPart, firstTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart);
+    console.log('Estos son los restOfSchedules: ' + restOfSchedules)
+    return decition(subRowFirstHour, tableNumber, rowNumber, restOfSchedules, firstPart, firstTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart);
 }
 
 

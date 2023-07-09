@@ -1,15 +1,15 @@
-const decition = (subRowFirstHour, x, ii, restOfSchedules, firstPart, firstTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart) => {
+const decition = (subRowFirstHour, tableNumber, rowNumber, restOfSchedules, firstPart, firstTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart) => {
        
     // if(firstTwoDigitsSecondPart === '00'){
 
     // }
 
     if (restOfSchedules < 100) {
-        less(subRowFirstHour, x, ii, firstPart, firstTwoDigitsFirstPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart);
+        less(subRowFirstHour, tableNumber, rowNumber, firstPart, firstTwoDigitsFirstPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart);
     }else if (restOfSchedules === 100) {
-        equal(subRowFirstHour, x, ii, firstPart, firstTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart);
+        equal(subRowFirstHour, tableNumber, rowNumber, firstPart, firstTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart);
     }else if (restOfSchedules > 100) {
-        greater(subRowFirstHour, x, ii, restOfSchedules, firstPart, firstTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart);
+        greater(subRowFirstHour, tableNumber, rowNumber, restOfSchedules, firstPart, firstTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart);
     }
     
 

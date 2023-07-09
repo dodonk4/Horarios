@@ -2,7 +2,7 @@
 
 const idListener = (tableNumber, changedId, action) => {
 
-    console.log(tableNumber, changedId, action);
+    // debugger;
    
     const rows = document.querySelectorAll(`.row:not(.header-row)`);
 
@@ -10,7 +10,9 @@ const idListener = (tableNumber, changedId, action) => {
 
     const cellInputs = document.querySelectorAll(`.cell-input`); //NECESITO ÚNICAMENTE EL INPUT
 
-    const options = document.querySelectorAll(`.option`);
+    //DEBERÍA DE AGREGAR AHORA LOS SUB-ROW YA QUE SE LES IMPLEMENTÓ UN ID
+
+    const subrows = document.querySelectorAll(`.sub-row`);
 
     const exactVariable = (variable, string) => {
 
@@ -37,9 +39,9 @@ const idListener = (tableNumber, changedId, action) => {
 
     const exactButtons = exactVariable(buttons, `button-sub-row`);
 
-    const exactCellInputs = exactVariable(cellInputs, `horarios`);  
+    const exactCellInputs = exactVariable(cellInputs, `horarios`);
 
-    // const exactOptions = exactVariable(options, `option_`);
+    const exactSubRows = exactVariable(subrows, `sub-row`);
 
     if(action === 'delete'){
 
@@ -51,6 +53,10 @@ const idListener = (tableNumber, changedId, action) => {
 
         forDelete(exactCellInputs, `horarios`, changedId, tableNumber);
 
+        forDelete(exactSubRows, `sub-row`, changedId, tableNumber);
+
+        idChangeAccount(changedId, 'delete');
+
     }else if(action === 'add'){
 
         console.log('add action');
@@ -60,6 +66,10 @@ const idListener = (tableNumber, changedId, action) => {
         forAdd(exactButtons, `button-sub-row`, changedId, tableNumber);
 
         forAdd(exactCellInputs, `horarios`, changedId, tableNumber);
+
+        forAdd(exactSubRows, `sub-row`, changedId, tableNumber);
+
+        idChangeAccount(changedId, 'add', tableNumber);
 
     }else{
 

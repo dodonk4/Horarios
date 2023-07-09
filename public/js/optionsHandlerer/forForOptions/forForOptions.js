@@ -1,5 +1,5 @@
-const forForOptions = (option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, ii, passCard) => {
-
+const forForOptions = (option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, passCard) => {
+    // debugger;
     for (let i = 0; i < 59; i++) {
 
         if (i.toString().length === 2) {
@@ -26,7 +26,7 @@ const forForOptions = (option, checker, rowWhoContainsOption, elementFromRowWhoC
 
                 const definitiveId = `${substractOfId.replace(`_${substractOfIdLastDigit}`, `_${Number(substractOfIdLastDigit) + 1}`)}`;
 
-                options(scheduleTable, elementFromRowWhoContainsOption, newScheduleForRootRow, definitiveId, tableNumber, ii);
+                options(scheduleTable, elementFromRowWhoContainsOption, newScheduleForRootRow, definitiveId, tableNumber, rowNumber);
 
                 break;
 
@@ -54,7 +54,7 @@ const forForOptions = (option, checker, rowWhoContainsOption, elementFromRowWhoC
 
                 const definitiveId = substractOfId;
 
-                options(scheduleTable, elementFromRowWhoContainsOption, newScheduleForRootRow, definitiveId, tableNumber, ii);
+                options(scheduleTable, elementFromRowWhoContainsOption, newScheduleForRootRow, definitiveId, tableNumber, rowNumber);
 
                 break;
 

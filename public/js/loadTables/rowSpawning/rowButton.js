@@ -1,5 +1,10 @@
-const rowButtonFunction = (row, tableNumber, subRow, i) => {
-    const rowButton = row.querySelector(`#button-sub-row${tableNumber}_${i}`);
+const rowButtonFunction = (row, tableNumber, subRow, rowNumber) => {
+
+    // debugger;
+
+    // rowNumber = updateRowNumber(rowNumber, tableNumber);//MODIFICA EL ROWNUMBER PARA QUE SEA COHERENTE CON LOS CAMBIOS DE LA SESIÓN
+
+    const rowButton = row.querySelector(`#button-sub-row${tableNumber}_${rowNumber}`);
         const subRowElements = subRow.querySelectorAll('*');
         rowButton.addEventListener('click', () =>{
             if (subRow.classList.contains('off2')) {

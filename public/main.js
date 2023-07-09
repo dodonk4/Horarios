@@ -22,6 +22,8 @@ const filesToLoad = [
     'optionsHandlerer/forForOptions/forForOptions.js',
     'optionsHandlerer/optionButtons.js',
     'updateValue.js',
+    'idListener/idChangeAccount.js',
+    'idListener/updateRowNumber.js',
     'loadTables/rowSpawning/rowButton.js',
     'loadTables/rowSpawning/customOptionsFunction.js',
     'loadTables/rowSpawning/commonOptionsFunction.js',

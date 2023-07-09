@@ -1,7 +1,7 @@
-const htmlModelFunction = (lastId, lastMinutes, limit, x, ii, firstPart, firstTwoDigitsFirstPart) => {
-    if(lastMinutes > limit){
+const htmlModelFunction = (lastId, lastMinutes, limit, tableNumber, rowNumber, firstPart, firstTwoDigitsFirstPart) => {
+    if(lastMinutes >= limit && limit != '00'){
         return false
     }
-    const htmlModel = `<div class="option off2" id="option_${x}_${ii}.${lastId}">${firstPart} - ${firstTwoDigitsFirstPart}:${lastMinutes}</div>`;
+    const htmlModel = `<div class="option off2" id="option_${tableNumber}_${rowNumber}.${lastId}">${firstPart} - ${firstTwoDigitsFirstPart}:${lastMinutes}</div>`;
     return htmlModel;
 }

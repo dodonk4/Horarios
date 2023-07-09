@@ -1,4 +1,4 @@
-const htmlModelFor = (lastId,  x, ii, firstTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart, restOfSchedules) => {
+const htmlModelFor = (lastId, tableNumber, rowNumber, firstTwoDigitsFirstPart, firstTwoDigitsSecondPart, lastTwoDigitsFirstPart, lastTwoDigitsSecondPart, restOfSchedules) => {
 
     const condition = (i) => {
         
@@ -36,7 +36,7 @@ const htmlModelFor = (lastId,  x, ii, firstTwoDigitsFirstPart, firstTwoDigitsSec
         const thirdCondition =  condition(i+1) > firstTwoDigitsSecondPart ? firstTwoDigitsSecondPart : condition(i+1);
         const fourthCondition = condition(i+1) > firstTwoDigitsSecondPart ? lastTwoDigitsSecondPart : '00';
 
-        let htmlInsertion = `<div class="option off2" id="option_${x}_${ii}.${lastId  + i}">${firstCondition}:${secondCondition} - ${thirdCondition}:${fourthCondition}</div>`;
+        let htmlInsertion = `<div class="option off2" id="option_${tableNumber}_${rowNumber}.${lastId  + i}">${firstCondition}:${secondCondition} - ${thirdCondition}:${fourthCondition}</div>`;
         htmlModel += htmlInsertion;
         
 
