@@ -3,5 +3,34 @@
 12/6/2023
 -Dar una nueva tabla de opciones horarias al horario el cual cambio
     Ejemplo: si 08:00 - 09:00 paso a 08:00 - 08:15, darle una tabla nueva.
+
 -Dar una tabla de opciones al horario creado
     Ejemplo: basándonos en el ejemplo anterior, tendría que haber una tabla para 08:15 - 09:00
+
+    HECHO
+
+
+
+
+
+
+
+
+
+
+
+9/7/2023
+X Existe varias contradicciones en las demas tablas de horarios. Todo funciona bien en la tabla 0 pero no en las demas.
+X Luego de tener hecho todos los arreglos requeridos en la primera tabla, corregir los errores de las demás.
+X O en su respectivo caso, arreglarlo primero y luego seguir con los demás agregados.
+
+-Acomodar las nuevas implementaciones que se encuentran en options.js
+
+  HECHO
+
+-Agragar SubRows a las filas creadas por opciones
+    Ejemplo: 08:00 - 08:15 tiene SubRows, pero 08:15 - 09:00 no.
+-Dotar de funcionalidad a las nuevas SubRows
+    Ejemplo: 08:00 - 08:15 tiene SubRows pero no andan.
+
+X Hay problemas con los id's de las sub-rows

@@ -14,8 +14,6 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
 
     const isTheLastRowOrAnyOtherRow = (passCard) => {
 
-        // modifiedDefinitiveId = definitiveId.slice(0, -2) + '_' + (Number(definitiveId.split('_')[1]) - 1);
-
         let lastNumberOfDefinitiveId = Number(definitiveId.split('_')[1]);
         let lastNumberOfDefinitiveIdUpdated = lastNumberOfDefinitiveId - 1;
         modifiedDefinitiveId = definitiveId.split('_')[0] + '_' + lastNumberOfDefinitiveIdUpdated;
@@ -62,49 +60,41 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
 
         parentNode.insertBefore(newRow, referenceNode);
 
+        
+
 
         //AREA OF WORK FOR RESETING OPTIONS
 
-
-        console.log('These are the objectives: ');
-        const elementFromRowWhoContainsOptionParent = elementFromRowWhoContainsOption.parentNode;
-        console.log(elementFromRowWhoContainsOptionParent.querySelector('.sub-row'));
-        console.log(elementFromRowWhoContainsOptionParent, newRow);
-
-        let newSubRow1 = subRowGerarchy(elementFromRowWhoContainsOptionParent, tableNumber, rowNumber);
-
-        let anySubRow_testingTool = document.querySelectorAll(`.sub-row`)[rowNumber];
-
-        
-
-        scheduleTable.replaceChild(newSubRow1, anySubRow_testingTool);
-
-        console.log(newSubRow1);
-        
-
         // debugger;
 
-        
-        
-        let newSubRow2 = subRowGerarchy(newRow, 0, 0);
 
-        console.log(newSubRow2);
+        const elementFromRowWhoContainsOptionParent = elementFromRowWhoContainsOption.parentNode;
+
+        const newSubRow1 = subRowGerarchy(elementFromRowWhoContainsOptionParent, tableNumber, rowNumber);
+
+        const mainDiv = document.querySelectorAll(`.main-div`)[tableNumber];
+
+        const subRowToBeReplaced = mainDiv.querySelectorAll(`.sub-row`)[rowNumber];//CAMBIAR NOMBRE
+        
+        debugger;
+
+        scheduleTable.replaceChild(newSubRow1, subRowToBeReplaced);
+        
+        
+
+        // newRow.insertAdjacentHTML('afterend', newSubRow2);
+
+        
+
+        
+
+
+        // console.log(newSubRow2);
+        //¿Se le tendrá que sumar un +1 a rowNumber?
 
 
         //*This is form rowSpawning/index.js. Adapt it, it may help a lot
 
-        // let subRow = subRowGerarchy(row, tableNumber, i);
-
-        // customOptionsFunction(subRow, row, scheduleTable, tableNumber, i);
-        // commonOptionsFunction(subRow, row, scheduleTable, tableNumber, i);
-        
-        
-
-        // rowButtonFunction(row, tableNumber, subRow, i);
-
-
-        // scheduleTable.appendChild(row);
-        // scheduleTable.appendChild(subRow);
 
         ///////////////
 
@@ -128,13 +118,27 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
          * 
         */
 
-        debugger;
+        // debugger;
 
         rowNumber = updateRowNumber(rowNumber, tableNumber);//MODIFICA EL ROWNUMBER PARA QUE SEA COHERENTE CON LOS CAMBIOS DE LA SESIÓN
+
+        const newSubRow2 = subRowGerarchy(newRow, tableNumber, (rowNumber + 1));// ESTE NUEVO SUB-ROW SERVIRÁ PARA LA SEGUNDA PARTE QUE QUEDA CUANDO SE CREA UNA FILA. POR EJEMPLO, SI HAY UN 08:00 - 08:30, ESTE SERA PARA EL 08:30 - 09:00
 
         idListener(tableNumber, definitiveId, 'add');
 
         rowButtonFunction(elementFromRowWhoContainsOption, tableNumber, newSubRow1, rowNumber);
+
+        // if(passCard === 'lastRow'){
+        //     ''
+        // }else{
+        //     // debugger;
+        //     let lastNumberOfId = Number(definitiveId.split('_')[1]);
+        //     let lastNumberOfIdUpdated = lastNumberOfId + 1;
+        //     let modifiedId = definitiveId.split('_')[0] + '_' + lastNumberOfIdUpdated;
+
+        //     let newReferenceNode = parentNode.querySelector(`#row${modifiedId}`);
+        //     parentNode.insertBefore(newSubRow2, newReferenceNode);
+        // }
 
     }
 

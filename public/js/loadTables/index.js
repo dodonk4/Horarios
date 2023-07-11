@@ -16,7 +16,7 @@ const loadTables = (tables) => {
 
     tables.forEach(table => {
         
-        x++;
+        
 
         const headerRow = headerRowFunction();
 
@@ -46,7 +46,7 @@ const loadTables = (tables) => {
 
         // console.log(x);
 
-        rowSpawning(table, (x-1), scheduleTable, rowQuantity);//*ES X-1 PORQUE EL PRIMER ID DE CUSTOM OPTION ES 0
+        rowSpawning(table, (x), scheduleTable, rowQuantity);//*ES X-1 PORQUE EL PRIMER ID DE CUSTOM OPTION ES 0
 
         let oneBr = document.createElement('br');
         
@@ -63,6 +63,8 @@ const loadTables = (tables) => {
         mainDivsContainer.appendChild(mainDiv);
 
         givingClassOffFunction(scheduleTableContainer);
+
+        x++;
 
     }); 
 
