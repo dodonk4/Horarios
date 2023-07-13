@@ -3,10 +3,11 @@ const listenerForOptions = (option, rowWhoContainsOption, scheduleTable, tableNu
     const elementFromRowWhoContainsOptionHTML = elementFromRowWhoContainsOption.innerHTML;
     let noInput = elementFromRowWhoContainsOptionHTML.replace(elementFromRowWhoContainsOption.querySelector('input').outerHTML, '');
     noInput = noInput.trim();
-    const checker = noInput.slice(0, 8) + noInput.slice(0,2);
+    const time = noInput.slice(0, 8) + noInput.slice(0,2);
+    console.log('Esto es un time: ' + time);
     option.addEventListener('click', () => {
-        // forForCommonOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber)
-        forForOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, 'staticType');
+        // forForCommonOptions(option, time, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber)
+        forToHandleOptions(option, time, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, 'staticType');
         console.log('A function will be called to grant options the hability to read the new schedules given and reset themselves');
     })
 
@@ -18,7 +19,7 @@ const listenerForCustomOptions = (option, rowWhoContainsOption, scheduleTable, t
     const elementFromRowWhoContainsOptionHTML = elementFromRowWhoContainsOption.innerHTML;
     let noInput = elementFromRowWhoContainsOptionHTML.replace(elementFromRowWhoContainsOption.querySelector('input').outerHTML, '');
     noInput = noInput.trim();
-    const checker = noInput.slice(0, 8) + noInput.slice(0,2);
+    const time = noInput.slice(0, 8) + noInput.slice(0,2);
     option.addEventListener('click', () => {
         if (option.querySelector('.inputForOptions').value.length === 0){
             console.log('Escriba un horario valido en el bloque');
@@ -27,8 +28,8 @@ const listenerForCustomOptions = (option, rowWhoContainsOption, scheduleTable, t
         }else if(option.querySelector('.inputForOptions').value < 1){
             console.log('Escriba un mayor a 0 e igual o menor a 59');
         }else{
-            // forForCustomOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber)
-            forForOptions(option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, 'inputType')
+            // forForCustomOptions(option, time, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber)
+            forToHandleOptions(option, time, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, 'inputType')
         }
         console.log('A function will be called to grant options the hability to read the new schedules given and reset themselves');
         

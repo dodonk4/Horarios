@@ -23,9 +23,10 @@ const forAdd = (exactArray, string, changedId, tableNumber) => {
         if(string != `horarios`){
 
             exactArray[i].id = `${string}${tableNumber}_${i}`;
+            
         }
 
-    }
+    }//ESTO NO ESTABA AFECTANDO A NADA
 
     
    

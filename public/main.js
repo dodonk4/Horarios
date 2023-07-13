@@ -19,7 +19,7 @@ const filesToLoad = [
     'htmlStructures/htmlForAddTable.js',
     'subRowHandlerer/testingGerarchy.js',
     'optionsHandlerer/options/options.js',
-    'optionsHandlerer/forForOptions/forForOptions.js',
+    'optionsHandlerer/forToHandleOptions/forToHandleOptions.js',
     'optionsHandlerer/optionButtons.js',
     'updateValue.js',
     'idListener/idChangeAccount.js',

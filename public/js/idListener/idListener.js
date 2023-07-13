@@ -1,6 +1,6 @@
 //ESTE UPDATE ID SIRVE PARA CUANDO SE CREAN SUBFILAS Y SE TIENEN QUE CAMBIAR LOS ID DE LAS FIFLAS RESTANTES
 
-const idListener = (tableNumber, changedId, action) => {
+const idListener = (tableNumber, changedId, action, idChangeAccountPermission) => {
 
     // debugger;
    
@@ -55,7 +55,9 @@ const idListener = (tableNumber, changedId, action) => {
 
         forDelete(exactSubRows, `sub-row`, changedId, tableNumber);
 
-        idChangeAccount(changedId, 'delete');
+        idChangeAccountPermission === true ? idChangeAccount(changedId, 'delete', tableNumber) : '';
+
+        // idChangeAccount(changedId, 'delete');
 
     }else if(action === 'add'){
 
@@ -69,7 +71,9 @@ const idListener = (tableNumber, changedId, action) => {
 
         forAdd(exactSubRows, `sub-row`, changedId, tableNumber);
 
-        idChangeAccount(changedId, 'add', tableNumber);
+        idChangeAccountPermission === true ? idChangeAccount(changedId, 'add', tableNumber) : '';
+
+        // idChangeAccount(changedId, 'add', tableNumber);
 
     }else{
 

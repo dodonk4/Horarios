@@ -1,6 +1,6 @@
 const rowButtonFunction = (row, tableNumber, subRow, rowNumber) => {
 
-    // debugger;
+    debugger;
 
     // rowNumber = updateRowNumber(rowNumber, tableNumber);//MODIFICA EL ROWNUMBER PARA QUE SEA COHERENTE CON LOS CAMBIOS DE LA SESIÓN
 

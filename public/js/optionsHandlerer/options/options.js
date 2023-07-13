@@ -65,10 +65,15 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
 
         //AREA OF WORK FOR RESETING OPTIONS
 
-        // debugger;
-
+        debugger;
 
         const elementFromRowWhoContainsOptionParent = elementFromRowWhoContainsOption.parentNode;
+
+        rowNumber = updateRowNumber(rowNumber, tableNumber);
+
+        // let firstUpdatedRowNumber = updateRowNumber(rowNumber, tableNumber);
+
+        // firstUpdatedRowNumber === rowNumber ? '' : rowNumber = firstUpdatedRowNumber;
 
         const newSubRow1 = subRowGerarchy(elementFromRowWhoContainsOptionParent, tableNumber, rowNumber);
 
@@ -76,24 +81,7 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
 
         const subRowToBeReplaced = mainDiv.querySelectorAll(`.sub-row`)[rowNumber];//CAMBIAR NOMBRE
         
-        debugger;
-
         scheduleTable.replaceChild(newSubRow1, subRowToBeReplaced);
-        
-        
-
-        // newRow.insertAdjacentHTML('afterend', newSubRow2);
-
-        
-
-        
-
-
-        // console.log(newSubRow2);
-        //¿Se le tendrá que sumar un +1 a rowNumber?
-
-
-        //*This is form rowSpawning/index.js. Adapt it, it may help a lot
 
 
         ///////////////
@@ -112,21 +100,29 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
             ''
         }
 
-        console.log('here must be the reset to erase the original options and add new ones.');
-        /*
-         *optionsReseter(options)
-         * 
-        */
 
-        // debugger;
+        // rowNumber = updateRowNumber(rowNumber, tableNumber);//MODIFICA EL ROWNUMBER PARA QUE SEA COHERENTE CON LOS CAMBIOS DE LA SESIÓN
 
-        rowNumber = updateRowNumber(rowNumber, tableNumber);//MODIFICA EL ROWNUMBER PARA QUE SEA COHERENTE CON LOS CAMBIOS DE LA SESIÓN
+        idListener(tableNumber, definitiveId, 'add', true);
 
         const newSubRow2 = subRowGerarchy(newRow, tableNumber, (rowNumber + 1));// ESTE NUEVO SUB-ROW SERVIRÁ PARA LA SEGUNDA PARTE QUE QUEDA CUANDO SE CREA UNA FILA. POR EJEMPLO, SI HAY UN 08:00 - 08:30, ESTE SERA PARA EL 08:30 - 09:00
 
-        idListener(tableNumber, definitiveId, 'add');
+        let newLastNumberOfId = Number(definitiveId.split('_')[1]);
+        let newLastNumberOfIdUpdated = newLastNumberOfId + 1;
+        let newModifiedId = definitiveId.split('_')[0] + '_' + newLastNumberOfIdUpdated;
+
+        let newReferenceNode = parentNode.querySelector(`#row${newModifiedId}`);
+
+        console.log(newReferenceNode);
+        parentNode.insertBefore(newSubRow2, newReferenceNode);
+
+        idListener(tableNumber, definitiveId, 'add', false);
 
         rowButtonFunction(elementFromRowWhoContainsOption, tableNumber, newSubRow1, rowNumber);
+
+        // rowNumber = updateRowNumber(rowNumber, tableNumber);
+
+        rowButtonFunction(newRow, tableNumber, newSubRow2, (rowNumber + 1));
 
         // if(passCard === 'lastRow'){
         //     ''

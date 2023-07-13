@@ -1,22 +1,22 @@
-const forForOptions = (option, checker, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, passCard) => {
+const forToHandleOptions = (option, time, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, passCard) => {
     // debugger;
     for (let i = 0; i < 59; i++) {
 
-        if (i.toString().length === 2) {
+        if (i.toString().length === 2) {//¿NOFUNCIONA SIN TO STRING?
 
-            let lastChecker;
+            let completeTime;
 
             if (passCard === 'inputType') {
 
-                lastChecker = checker + `:${option.querySelector('.inputForOptions').value}`;
+                completeTime = time + `:${option.querySelector('.inputForOptions').value}`;
 
             } else {
 
-                lastChecker = checker + `:${option.innerHTML.split("-")[1].split(":")[1]}`;
+                completeTime = time + `:${option.innerHTML.split("-")[1].split(":")[1]}`;
 
             }
 
-            if (lastChecker === `${checker}:${i}`) {
+            if (completeTime === `${time}:${i}`) {
 
                 const substractOfId = rowWhoContainsOption.querySelector('.button-sub-row').id.replace('button-sub-row', '');
 
@@ -34,19 +34,19 @@ const forForOptions = (option, checker, rowWhoContainsOption, elementFromRowWhoC
 
         } else if (i.toString().length === 1){
 
-            let lastChecker;
+            let completeTime;
             
             if (passCard === 'inputType') {
 
-                lastChecker = checker + `:0${option.querySelector('.inputForOptions').value}`;
+                completeTime = time + `:0${option.querySelector('.inputForOptions').value}`;
 
             } else {
 
-                lastChecker = checker + `:0${option.innerHTML.split("-")[1].split(":")[1]}`;
+                completeTime = time + `:0${option.innerHTML.split("-")[1].split(":")[1]}`;
 
             }
 
-            if (lastChecker === `${checker}:0${i}`) {//ESTO INCLUYE :0, :4 Y :45, ES CUALQUIER COSA. NO SIRVE PARA AGREGAR EL ID COMO INDICACION DE HORARIO
+            if (completeTime === `${time}:0${i}`) {//ESTO INCLUYE :0, :4 Y :45, ES CUALQUIER COSA. NO SIRVE PARA AGREGAR EL ID COMO INDICACION DE HORARIO
 
                 const substractOfId = rowWhoContainsOption.querySelector('.button-sub-row').id.replace('button-sub-row', '');
 
