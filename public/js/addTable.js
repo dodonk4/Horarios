@@ -63,4 +63,4 @@ const addTable = () => {
     toggleTable(`toggle-table-button${mainDivsContainerLength3}`, `schedule-table-container${mainDivsContainerLength3}`);
 }
 
-addButton.addEventListener('click', addTable);
+// addButton.addEventListener('click', addTable);

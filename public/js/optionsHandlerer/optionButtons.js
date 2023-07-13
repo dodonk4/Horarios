@@ -4,7 +4,6 @@ const listenerForOptions = (option, rowWhoContainsOption, scheduleTable, tableNu
     let noInput = elementFromRowWhoContainsOptionHTML.replace(elementFromRowWhoContainsOption.querySelector('input').outerHTML, '');
     noInput = noInput.trim();
     const time = noInput.slice(0, 8) + noInput.slice(0,2);
-    console.log('Esto es un time: ' + time);
     option.addEventListener('click', () => {
         // forForCommonOptions(option, time, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber)
         forToHandleOptions(option, time, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, 'staticType');
@@ -15,7 +14,7 @@ const listenerForOptions = (option, rowWhoContainsOption, scheduleTable, tableNu
 
 const listenerForCustomOptions = (option, rowWhoContainsOption, scheduleTable, tableNumber, rowNumber) => {
     
-    let elementFromRowWhoContainsOption = rowWhoContainsOption.querySelector('.time-cell');
+    const elementFromRowWhoContainsOption = rowWhoContainsOption.querySelector('.time-cell');
     const elementFromRowWhoContainsOptionHTML = elementFromRowWhoContainsOption.innerHTML;
     let noInput = elementFromRowWhoContainsOptionHTML.replace(elementFromRowWhoContainsOption.querySelector('input').outerHTML, '');
     noInput = noInput.trim();
@@ -35,3 +34,16 @@ const listenerForCustomOptions = (option, rowWhoContainsOption, scheduleTable, t
         
     })
 }
+
+// const listenerForOptions_NewPrototype = (option, rowWhoContainsOption, scheduleTable, tableNumber, rowNumber) => {
+//     const elementFromRowWhoContainsOption = rowWhoContainsOption.querySelector('.time-cell');
+//     const elementFromRowWhoContainsOptionHTML = elementFromRowWhoContainsOption.innerHTML;
+//     let noInput = elementFromRowWhoContainsOptionHTML.replace(elementFromRowWhoContainsOption.querySelector('input').outerHTML, '');
+//     noInput = noInput.trim();
+//     const time = noInput.slice(0, 8) + noInput.slice(0,2);
+//     forToHandleOptions(option, time, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, 'inputType');
+//     if(option.querySelectorAll('.option:not(.custom').length > 0){
+//         forToHandleOptions(option, time, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, 'staticType')
+//     }
+
+// }

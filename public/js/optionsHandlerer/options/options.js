@@ -65,8 +65,6 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
 
         //AREA OF WORK FOR RESETING OPTIONS
 
-        debugger;
-
         const elementFromRowWhoContainsOptionParent = elementFromRowWhoContainsOption.parentNode;
 
         rowNumber = updateRowNumber(rowNumber, tableNumber);
@@ -123,6 +121,24 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
         // rowNumber = updateRowNumber(rowNumber, tableNumber);
 
         rowButtonFunction(newRow, tableNumber, newSubRow2, (rowNumber + 1));
+
+        debugger;
+
+        console.log(elementFromRowWhoContainsOption);
+        // console.log(elementFromRowWhoContainsOption)
+
+        // listenerForOptions(newSubRow1, elementFromRowWhoContainsOption, scheduleTable, tableNumber, rowNumber);//ATENCIÓN CUANDO SOLO ESTE ELCUSTOM, CAPAZ DE ERROR
+        // listenerForCustomOptions(newSubRow1, elementFromRowWhoContainsOption, scheduleTable, tableNumber, rowNumber);
+        // listenerForOptions(newSubRow2, newRow, scheduleTable, tableNumber, (rowNumber + 1));
+        // listenerForCustomOptions(newSubRow2, newRow, scheduleTable, tableNumber, (rowNumber + 1));
+
+        customOptionsFunction(newSubRow1, elementFromRowWhoContainsOptionParent, scheduleTable, tableNumber, rowNumber);
+        commonOptionsFunction(newSubRow1, elementFromRowWhoContainsOptionParent, scheduleTable, tableNumber, rowNumber);
+        customOptionsFunction(newSubRow2, newRow, scheduleTable, tableNumber, rowNumber);
+        commonOptionsFunction(newSubRow2, newRow, scheduleTable, tableNumber, rowNumber);
+        
+
+        //NO ESTÁ FUNCIONANDO
 
         // if(passCard === 'lastRow'){
         //     ''

@@ -30,7 +30,7 @@ addButton.addEventListener('click', () => {
     sessionCounterForTableCreation++;
     let arrayOfSchedulesAndCells = sqlForNewTable();
 
-    createSqlTableForNewTable(sqlTableName, arrayOfSchedulesAndCells[0], arrayOfSchedulesAndCells[1], userTableName);
+    // createSqlTableForNewTable(sqlTableName, arrayOfSchedulesAndCells[0], arrayOfSchedulesAndCells[1], userTableName);
 
 });
 
