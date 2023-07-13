@@ -11,13 +11,13 @@
 
 const { Pool } = require('pg');
 
-const pool = new Pool({
-  host: 'localhost',
-  user: 'partner',
-  password: 'password',
-  database: 'postgres',
-  port: 5432
-});
+// const pool = new Pool({
+//   host: 'localhost',
+//   user: 'partner',
+//   password: 'password',
+//   database: 'postgres',
+//   port: 5432
+// });
 
 // const pool = new Pool({
 //   host: process.env.POSTGRES_HOST,
@@ -27,8 +27,8 @@ const pool = new Pool({
 //   port: 5432
 // });
 
-// const pool = new Pool({
-//   connectionString: process.env.POSTGRES_URL + "?sslmode=require",
-// })
+const pool = new Pool({
+  connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+})
 
 module.exports = pool;
