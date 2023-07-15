@@ -67,7 +67,10 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
 
         const elementFromRowWhoContainsOptionParent = elementFromRowWhoContainsOption.parentNode;
 
-        rowNumber = updateRowNumber(rowNumber, tableNumber);
+        // rowNumber = updateRowNumber(rowNumber, tableNumber);
+        
+        rowNumber = Number(elementFromRowWhoContainsOptionParent.id.split('_')[1]);
+
 
         // let firstUpdatedRowNumber = updateRowNumber(rowNumber, tableNumber);
 
