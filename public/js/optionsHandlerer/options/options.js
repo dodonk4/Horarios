@@ -60,7 +60,7 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
 
         parentNode.insertBefore(newRow, referenceNode);
 
-        
+        '';
 
 
         //AREA OF WORK FOR RESETING OPTIONS

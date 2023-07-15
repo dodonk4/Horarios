@@ -1,0 +1,269 @@
+[33mcommit 71b916a6029498ebfc1c7c47bcfce565bc561093[m[33m ([m[1;36mHEAD -> [m[1;32mpostgreSQL[m[33m)[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Fri Jul 14 22:33:16 2023 -0300
+
+    all SubRows working
+
+[33mcommit 081797cc7097caaecb1888c8761f1b5b0e14c61a[m
+Merge: f1da09e e7be310
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Thu Jul 13 20:55:50 2023 -0300
+
+    Merge branch 'postgreSQL' of https://github.com/dodonk4/Horarios into postgreSQL
+
+[33mcommit f1da09ef7a42e1553fc25bc592244b0481f6e63b[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Thu Jul 13 20:54:46 2023 -0300
+
+    no adding tables
+
+[33mcommit e7be310414d94bc37a7b77126d8a6bc34c7d9676[m
+Author: Ismael Agustín <50113883+dodonk4@users.noreply.github.com>
+Date:   Thu Jul 13 19:32:00 2023 -0300
+
+    Update db.js
+
+[33mcommit 43ade7b4d1b3ebbd594d94ca647d371d9650f5dd[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Thu Jul 13 11:19:36 2023 -0300
+
+    allSubRowsFixed
+
+[33mcommit f1283db2358ce07d53319ddc3d03498fd5b926f4[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue Jul 11 12:10:58 2023 -0300
+
+    11/7/2023
+
+[33mcommit bfc11dee834956d026d82141b4b9cafbf54dd6d6[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Sun Jul 9 15:39:40 2023 -0300
+
+    db fix
+
+[33mcommit 7f13fd05d99b698a591695ab73076c03322e5bda[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Sun Jul 9 13:20:34 2023 -0300
+
+    rowButton fix
+
+[33mcommit 3212e32ece937ee916a32c8b7efb5af3aa97fb1f[m
+Merge: 0065905 2e63af7
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Mon Jun 12 14:24:29 2023 -0300
+
+    Merge branch 'postgreSQL' of https://github.com/dodonk4/Horarios into postgreSQL
+
+[33mcommit 0065905d60e5f9f20dfc663dab2a6a19850ffebf[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Mon Jun 12 14:23:23 2023 -0300
+
+    16/6/2023
+
+[33mcommit 2e63af75e4a0e6a776bd68ec289b08ef77211e33[m
+Author: Ismael Agustín <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue May 23 17:46:54 2023 -0300
+
+    Update db.js
+
+[33mcommit f5c05bd351cf1a595915608f0dcec7570ebf1d5a[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue May 23 17:45:00 2023 -0300
+
+    23/5/2023 main.js change
+
+[33mcommit c79a52020354df52879100b816fea0662957262e[m
+Merge: ca10fd1 8ec4715
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue May 23 17:21:38 2023 -0300
+
+    Merge branch 'postgreSQL' of https://github.com/dodonk4/Horarios into postgreSQL
+
+[33mcommit ca10fd1134bd491af459e6c98718360ed8a098a2[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue May 23 17:20:33 2023 -0300
+
+    23/5/2023 forForOptions unify
+
+[33mcommit 8ec4715d232f160e59e583efe60654760ea92dc3[m
+Author: Ismael Agustín <50113883+dodonk4@users.noreply.github.com>
+Date:   Thu May 18 15:13:23 2023 -0300
+
+    Update db.js
+
+[33mcommit 85d5030ebfabec3f1b3af342f5aa2fb2082e0eb1[m
+Author: Ismael Agustín <50113883+dodonk4@users.noreply.github.com>
+Date:   Thu May 18 15:11:51 2023 -0300
+
+    Update db.js
+
+[33mcommit d6c7639a102be2716a129f8ff588dd1ca70c57dd[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Thu May 18 15:09:27 2023 -0300
+
+    18/5/2023
+
+[33mcommit 37218476d118e05fb2bd3ba2c88a0351d5d0e93c[m
+Merge: 45ec9b0 031248a
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Sun May 7 11:24:26 2023 -0300
+
+    Merge branch 'postgreSQL' of https://github.com/dodonk4/Horarios into postgreSQL
+
+[33mcommit 45ec9b09971d18a64278f99dce7ed629f2f2ecc4[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Sun May 7 11:22:59 2023 -0300
+
+    7/5/2023 loadTables improvement
+
+[33mcommit 031248ac47d3f7805e22abe55047f473b856d34a[m
+Author: Ismael Agustín <50113883+dodonk4@users.noreply.github.com>
+Date:   Sat May 6 12:57:22 2023 -0300
+
+    Update db.js
+
+[33mcommit 71d20250de52e4d027e5c627801dbff3bf88c41d[m
+Author: Ismael Agustín <50113883+dodonk4@users.noreply.github.com>
+Date:   Sat May 6 12:48:17 2023 -0300
+
+    Update db.js
+
+[33mcommit 759de10e6f025788bfb5c1a2666235b30f935c8d[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Sat May 6 12:44:18 2023 -0300
+
+    6/5/2023 12:44
+
+[33mcommit 25d2ef4e79931ad70e7206a1840d2044a2cfc93d[m
+Merge: c8a6b24 786162a
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Sat May 6 12:36:46 2023 -0300
+
+    6/5/2026 git add db.js!
+
+[33mcommit c8a6b24ca85c642d84e924b58e8a5cea4fd476f8[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Sat May 6 12:31:59 2023 -0300
+
+    6/5/2023
+
+[33mcommit 786162a64a0263061eebf67ef04da0c31d18ccf1[m
+Author: Ismael Agustín <50113883+dodonk4@users.noreply.github.com>
+Date:   Fri May 5 13:05:44 2023 -0300
+
+    Update loadTables.js
+
+[33mcommit 10ec56bb53352ff719531e1a1ac80180662f865b[m
+Author: Ismael Agustín <50113883+dodonk4@users.noreply.github.com>
+Date:   Fri May 5 13:01:40 2023 -0300
+
+    Update db.js
+
+[33mcommit 742307e59b978ea2155ad4e9a9db24e5050fead4[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Fri May 5 07:33:42 2023 -0300
+
+    5/5/2023 testing database
+
+[33mcommit f65e7ecc82f096019adee480e34b1d3448e7b243[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Fri May 5 07:31:16 2023 -0300
+
+    5/5/2023 coonnection
+
+[33mcommit 274029ca1a0c810fb8a12e0a3a30e712bb9ff0a3[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Thu May 4 00:19:44 2023 -0300
+
+    postgres
+
+[33mcommit 491fd4f8da4ce4a44ed98dba636e6ee0e7127338[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue May 2 11:27:48 2023 -0300
+
+    ignore
+
+[33mcommit 0233c37adb8e35dc6d3f648fdbd6ca895a9b4c1a[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue May 2 09:47:18 2023 -0300
+
+    vercel try 2
+
+[33mcommit 6948c76837e18039f01e62df625271cc37684d99[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue May 2 09:46:08 2023 -0300
+
+    vercel try
+
+[33mcommit 18dcde262eea75a0f8be74c8a8951815172e8165[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue May 2 09:43:53 2023 -0300
+
+    first vercel
+
+[33mcommit 266f60e851ef9de85c90d8d2cf039300f7a07f49[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue May 2 08:32:31 2023 -0300
+
+    2/5/2023 3
+
+[33mcommit 105648e6899705812e6f5d44ee8500265d3fbd67[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue May 2 08:29:07 2023 -0300
+
+    2/5/2023 2
+
+[33mcommit bc25c59af398dcbf759e5368e68e533be67e2bb6[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue May 2 08:27:16 2023 -0300
+
+    2/5/2023 2
+
+[33mcommit 5a35a80e310551bd49a8997d74d6f0b1156df07f[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue May 2 08:24:06 2023 -0300
+
+    2/5/2023
+
+[33mcommit 7aef81799fd3d344e28fd078fe9fc0bcd742933c[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Thu Apr 20 07:43:58 2023 -0300
+
+    20/4/2023
+
+[33mcommit bbf7fbe3c00236804ee2f052ba99cd1323757255[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Wed Apr 19 08:27:12 2023 -0300
+
+    19/4/2023
+
+[33mcommit 8bd64b298c59d0169c1d6396d33844fa011332e3[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue Apr 18 23:40:16 2023 -0300
+
+    18/4/2023
+
+[33mcommit 949b6671129050fbc0b5069d9cd64ff26df615a6[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Sat Apr 15 23:42:31 2023 -0300
+
+    15/4/2023
+
+[33mcommit 2bcbfb39fb9463521f0054716caf36d2d60146d6[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Thu Apr 13 09:12:02 2023 -0300
+
+    13/4/2023
+
+[33mcommit 21c939b710fd1d7bfd0f20c0420c8ed2f8fc95e6[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue Apr 11 19:28:00 2023 -0300
+
+    11/4/23
+
+[33mcommit c6be6636fb0bb53383080da93a5649561b3a5d82[m
+Author: dodonk4 <50113883+dodonk4@users.noreply.github.com>
+Date:   Tue Apr 11 10:42:52 2023 -0300
+
+    fourth testing git
+
