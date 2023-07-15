@@ -1,6 +1,6 @@
 const forToHandleOptions = (option, time, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, passCard) => {
     // debugger;
-    for (let i = 0; i < 59; i++) {
+    for (let i = 0; i <= 59; i++) {
 
         if (i.toString().length === 2) {//¿NOFUNCIONA SIN TO STRING?
 
@@ -50,11 +50,11 @@ const forToHandleOptions = (option, time, rowWhoContainsOption, elementFromRowWh
 
                 const substractOfId = rowWhoContainsOption.querySelector('.button-sub-row').id.replace('button-sub-row', '');
 
-                const newScheduleForRootRow = noInput.slice(0, 8) + noInput.slice(0,2) + `:0${i}`;
+                const substractOfIdLastDigit = substractOfId.length === 4 ? substractOfId.slice(2, 4) : substractOfId.slice(2, 3);
 
-                const definitiveId = substractOfId;
+                const definitiveId = `${substractOfId.replace(`_${substractOfIdLastDigit}`, `_${Number(substractOfIdLastDigit) + 1}`)}`;
 
-                options(scheduleTable, elementFromRowWhoContainsOption, newScheduleForRootRow, definitiveId, tableNumber, rowNumber);
+                options(scheduleTable, elementFromRowWhoContainsOption, completeTime, definitiveId, tableNumber, rowNumber);
 
                 break;
 
