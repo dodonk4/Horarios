@@ -1,14 +1,23 @@
 const forToHandleOptions = (option, time, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, passCard) => {
-    // debugger;
     for (let i = 0; i <= 59; i++) {
 
-        if (passCard === 'inputType') {
+        if (passCard === 'inputType') {//IF PARA LIMITAR LAS ACCIONES DE LOS CUSTOM OPTIONS
 
-            if(option.querySelector('.inputForOptions').value <= Number(noInput.slice(3, 5))){
-                console.log('bye bye')
-                break;
-            }
-            
+            let valueOfInput = Number(option.querySelector('.inputForOptions').value);
+            let valueOfSchedule = Number(noInput.slice(3, 5));
+
+            if(valueOfSchedule === 0){
+                valueOfSchedule = Number(noInput.slice(11, 13))
+                if(valueOfInput >= valueOfSchedule){
+                    break;
+                }
+            }else{
+                if(valueOfInput <= valueOfSchedule){
+                    break;
+                }else if(valueOfInput === Number(noInput.slice(11, 13))){
+                    break;
+                }
+            } 
         }
 
         if (i.toString().length === 2) {//¿NOFUNCIONA SIN TO STRING?

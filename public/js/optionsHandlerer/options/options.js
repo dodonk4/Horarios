@@ -12,6 +12,8 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
 
     let elementWithTheElementWithTheNextRowSchedule;
 
+    debugger;
+
     const isTheLastRowOrAnyOtherRow = (passCard) => {
 
         let lastNumberOfDefinitiveId = Number(definitiveId.split('_')[1]);
@@ -42,7 +44,7 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
 
         let lastPartSchedule
 
-        passCard === 'lastRow' ? lastPartSchedule = '00:00' : lastPartSchedule = nextRowSchedule.slice(0, 6);
+        passCard === 'lastRow' ? lastPartSchedule = '23:59' : lastPartSchedule = nextRowSchedule.slice(0, 6);
 
         const firstPartSchedule = newScheduleForRootRow.slice(8,13)
 
@@ -67,14 +69,7 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
 
         const elementFromRowWhoContainsOptionParent = elementFromRowWhoContainsOption.parentNode;
 
-        // rowNumber = updateRowNumber(rowNumber, tableNumber);
-        
         rowNumber = Number(elementFromRowWhoContainsOptionParent.id.split('_')[1]);
-
-
-        // let firstUpdatedRowNumber = updateRowNumber(rowNumber, tableNumber);
-
-        // firstUpdatedRowNumber === rowNumber ? '' : rowNumber = firstUpdatedRowNumber;
 
         const newSubRow1 = subRowGerarchy(elementFromRowWhoContainsOptionParent, tableNumber, rowNumber);
 
@@ -85,7 +80,6 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
         scheduleTable.replaceChild(newSubRow1, subRowToBeReplaced);
 
 
-        ///////////////
 
         if(passCard === 'lastRow'){
 
@@ -101,9 +95,6 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
             ''
         }
 
-
-        // rowNumber = updateRowNumber(rowNumber, tableNumber);//MODIFICA EL ROWNUMBER PARA QUE SEA COHERENTE CON LOS CAMBIOS DE LA SESIÓN
-
         idListener(tableNumber, definitiveId, 'add', true);
 
         const newSubRow2 = subRowGerarchy(newRow, tableNumber, (rowNumber + 1));// ESTE NUEVO SUB-ROW SERVIRÁ PARA LA SEGUNDA PARTE QUE QUEDA CUANDO SE CREA UNA FILA. POR EJEMPLO, SI HAY UN 08:00 - 08:30, ESTE SERA PARA EL 08:30 - 09:00
@@ -112,28 +103,19 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
         let newLastNumberOfIdUpdated = newLastNumberOfId + 1;
         let newModifiedId = definitiveId.split('_')[0] + '_' + newLastNumberOfIdUpdated;
 
-        let newReferenceNode = parentNode.querySelector(`#row${newModifiedId}`);
+        let newReferenceNode;
 
-        console.log(newReferenceNode);
+        passCard === 'lastRow' ? newReferenceNode = parentNode.querySelector(`#lastElement`) : newReferenceNode = parentNode.querySelector(`#row${newModifiedId}`);
+
         parentNode.insertBefore(newSubRow2, newReferenceNode);
 
         idListener(tableNumber, definitiveId, 'add', false);
 
         rowButtonFunction(elementFromRowWhoContainsOption, tableNumber, newSubRow1, rowNumber);
 
-        // rowNumber = updateRowNumber(rowNumber, tableNumber);
-
         rowButtonFunction(newRow, tableNumber, newSubRow2, (rowNumber + 1));
 
         debugger;
-
-        console.log(elementFromRowWhoContainsOption);
-        // console.log(elementFromRowWhoContainsOption)
-
-        // listenerForOptions(newSubRow1, elementFromRowWhoContainsOption, scheduleTable, tableNumber, rowNumber);//ATENCIÓN CUANDO SOLO ESTE ELCUSTOM, CAPAZ DE ERROR
-        // listenerForCustomOptions(newSubRow1, elementFromRowWhoContainsOption, scheduleTable, tableNumber, rowNumber);
-        // listenerForOptions(newSubRow2, newRow, scheduleTable, tableNumber, (rowNumber + 1));
-        // listenerForCustomOptions(newSubRow2, newRow, scheduleTable, tableNumber, (rowNumber + 1));
 
         customOptionsFunction(newSubRow1, elementFromRowWhoContainsOptionParent, scheduleTable, tableNumber, rowNumber);
         commonOptionsFunction(newSubRow1, elementFromRowWhoContainsOptionParent, scheduleTable, tableNumber, rowNumber);
@@ -141,36 +123,16 @@ const options = (scheduleTable, elementFromRowWhoContainsOption, newScheduleForR
         commonOptionsFunction(newSubRow2, newRow, scheduleTable, tableNumber, rowNumber);
         
 
-        //NO ESTÁ FUNCIONANDO
-
-        // if(passCard === 'lastRow'){
-        //     ''
-        // }else{
-        //     // debugger;
-        //     let lastNumberOfId = Number(definitiveId.split('_')[1]);
-        //     let lastNumberOfIdUpdated = lastNumberOfId + 1;
-        //     let modifiedId = definitiveId.split('_')[0] + '_' + lastNumberOfIdUpdated;
-
-        //     let newReferenceNode = parentNode.querySelector(`#row${modifiedId}`);
-        //     parentNode.insertBefore(newSubRow2, newReferenceNode);
-        // }
-
     }
 
     if (Number(definitiveId.split('_')[1]) === lengthOfAllRowsInTheTable - 1) {
 
-        console.log('lastRow');
-
         isTheLastRowOrAnyOtherRow('lastRow');
 
     } else {
-        
-        console.log('commonRow');
 
         isTheLastRowOrAnyOtherRow('commonRow');
 
     }
 
-    
-    //"elementWithTheNextRowSchedule" is the next row which isn't modified
 }
