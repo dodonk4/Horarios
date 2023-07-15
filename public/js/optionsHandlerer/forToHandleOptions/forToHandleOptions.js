@@ -2,6 +2,15 @@ const forToHandleOptions = (option, time, rowWhoContainsOption, elementFromRowWh
     // debugger;
     for (let i = 0; i <= 59; i++) {
 
+        if (passCard === 'inputType') {
+
+            if(option.querySelector('.inputForOptions').value <= Number(noInput.slice(3, 5))){
+                console.log('bye bye')
+                break;
+            }
+            
+        }
+
         if (i.toString().length === 2) {//¿NOFUNCIONA SIN TO STRING?
 
             let completeTime;
