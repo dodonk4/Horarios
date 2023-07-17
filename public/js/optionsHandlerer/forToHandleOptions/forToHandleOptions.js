@@ -1,6 +1,8 @@
 const forToHandleOptions = (option, time, rowWhoContainsOption, elementFromRowWhoContainsOption, scheduleTable, noInput, tableNumber, rowNumber, passCard) => {
     for (let i = 0; i <= 59; i++) {
 
+        debugger;
+
         if (passCard === 'inputType') {//IF PARA LIMITAR LAS ACCIONES DE LOS CUSTOM OPTIONS
 
             let valueOfInput = Number(option.querySelector('.inputForOptions').value);

@@ -4,6 +4,7 @@ const rowFunction = (table, tableNumber, i) => {
     row.id = `row${tableNumber}_${i}`;
 
     row.innerHTML= `
+        <input type="button" class="delete-row-button" id="delete-row-button${tableNumber}_${i}" value="X"></input>
         <div class="cell time-cell">
         <input type="button" class="button-sub-row" id="button-sub-row${tableNumber}_${i}" value=">" style='align: left; width: 20px; height: 20px;'></input>${table.rows.find(celda=> celda.celda_scndid === -(i+1) + '.0')['celda_value']}</div>
         <div class="cell"><input type="text" class="cell-input" placeholder="..." id="horarios${tableNumber}_${i}.0" value="${table.rows.find(celda=> celda.celda_scndid === i + '.0')['celda_value']}"></div>

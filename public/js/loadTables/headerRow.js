@@ -1,6 +1,7 @@
 const headerRowFunction = () =>{
     const headerRow = document.createElement('div');
-    headerRow.innerHTML = `<div class="cell time-cell"></div>
+    headerRow.innerHTML = `<div id="ghost-cell" style= 'width: 50px;'></div>
+        <div class="cell time-cell"></div>
         <div class="cell day">Lunes</div>
         <div class="cell day">Martes</div>
         <div class="cell day">Miércoles</div>

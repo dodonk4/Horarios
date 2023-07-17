@@ -26,6 +26,7 @@ const filesToLoad = [
     'updateValue.js',
     'idListener/idChangeAccount.js',
     'idListener/updateRowNumber.js',
+    'loadTables/deleteRowButton.js',
     'loadTables/rowSpawning/rowButton.js',
     'loadTables/rowSpawning/row.js',
     'loadTables/rowSpawning/index.js',

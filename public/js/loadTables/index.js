@@ -42,9 +42,9 @@ const loadTables = (tables) => {
 
         toggleTableButtonShowAndHiddenEvent(toggleTableButton, scheduleTableContainer);
 
-        const rowQuantity = table.rows.filter(celdas=> celdas.celda_type === 'schedule');
+        scheduleTable.appendChild(headerRow);
 
-        // console.log(x);
+        const rowQuantity = table.rows.filter(celdas=> celdas.celda_type === 'schedule');
 
         rowSpawning(table, (x), scheduleTable, rowQuantity);//*ES X-1 PORQUE EL PRIMER ID DE CUSTOM OPTION ES 0
 

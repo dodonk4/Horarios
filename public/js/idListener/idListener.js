@@ -14,6 +14,8 @@ const idListener = (tableNumber, changedId, action, idChangeAccountPermission) =
 
     const subrows = document.querySelectorAll(`.sub-row`);
 
+    const deleteRowButtons = document.querySelectorAll(`.delete-row-button`);
+
     const exactVariable = (variable, string) => {
 
         const exactVariable = [];
@@ -43,6 +45,9 @@ const idListener = (tableNumber, changedId, action, idChangeAccountPermission) =
 
     const exactSubRows = exactVariable(subrows, `sub-row`);
 
+    const exactDeleteRowButtons = exactVariable(deleteRowButtons, `delete-row-button`);
+
+
     if(action === 'delete'){
 
         console.log('delete action');
@@ -54,6 +59,8 @@ const idListener = (tableNumber, changedId, action, idChangeAccountPermission) =
         forDelete(exactCellInputs, `horarios`, changedId, tableNumber);
 
         forDelete(exactSubRows, `sub-row`, changedId, tableNumber);
+        
+        forDelete(exactDeleteRowButtons, `sub-row`, changedId, tableNumber);
 
         idChangeAccountPermission === true ? idChangeAccount(changedId, 'delete', tableNumber) : '';
 
@@ -70,6 +77,8 @@ const idListener = (tableNumber, changedId, action, idChangeAccountPermission) =
         forAdd(exactCellInputs, `horarios`, changedId, tableNumber);
 
         forAdd(exactSubRows, `sub-row`, changedId, tableNumber);
+
+        forAdd(exactDeleteRowButtons, `sub-row`, changedId, tableNumber);
 
         idChangeAccountPermission === true ? idChangeAccount(changedId, 'add', tableNumber) : '';
 
